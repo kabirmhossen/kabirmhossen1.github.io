@@ -3,34 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luminae — Creative Photography</title>
+  <meta name="description" content="Academic website of Kabir Hossen, Research Officer in computational biology and single-cell genomics." />
+  <title>Kabir Hossen · Computational Biology & Single-Cell Genomics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
 /* ============================================
-   LUMINAE — Photography Portfolio
-   Aesthetic: Refined minimal, editorial warm
-   Fonts: DM Serif Display + DM Sans
+   KABIR HOSSEN — Academic Portfolio
+   Aesthetic: Refined minimal, editorial
 ============================================ */
-
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:       #f2f2f6;
-  --bg-card:  #ffffff;
-  --ink:      #0e0e0e;
-  --ink-mid:  #5a5a5a;
-  --ink-soft: #9a9a9a;
-  --accent:   #0e0e0e;
-  --border:   rgba(0,0,0,0.08);
-  --pill-bg:  rgba(255,255,255,0.85);
-  --shadow:   0 2px 24px rgba(0,0,0,0.07);
-  --shadow-lg:0 8px 48px rgba(0,0,0,0.11);
-  --radius:   18px;
-  --radius-sm:10px;
-  --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  --bg:        #f2f2f6;
+  --bg-card:   #ffffff;
+  --ink:       #0e0e0e;
+  --ink-mid:   #5a5a5a;
+  --ink-soft:  #9a9a9a;
+  --border:    rgba(0,0,0,0.08);
+  --pill-bg:   rgba(255,255,255,0.85);
+  --shadow:    0 2px 24px rgba(0,0,0,0.07);
+  --shadow-lg: 0 8px 48px rgba(0,0,0,0.11);
+  --radius:    18px;
+  --radius-sm: 10px;
+  --ease:      cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 html { scroll-behavior: smooth; }
-
 body {
   font-family: 'DM Sans', sans-serif;
   background: var(--bg);
@@ -39,508 +39,285 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* ---- TYPOGRAPHY ---- */
 h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.1; }
 em { font-style: italic; }
+a  { color: inherit; }
 
 /* ---- BUTTONS ---- */
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 14px 28px;
-  border-radius: 100px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  transition: var(--transition);
-  white-space: nowrap;
-  letter-spacing: 0.01em;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 100px;
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem;
+  font-weight: 500; text-decoration: none; cursor: pointer;
+  border: none; transition: all 0.4s var(--ease);
+  white-space: nowrap; letter-spacing: 0.01em;
 }
-.btn--dark {
-  background: var(--ink);
-  color: #fff;
-}
-.btn--dark:hover {
-  background: #333;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
-}
-.btn--outline {
-  background: var(--pill-bg);
-  color: var(--ink);
-  border: 1.5px solid var(--border);
-  backdrop-filter: blur(8px);
-}
-.btn--outline:hover {
-  background: #fff;
-  border-color: rgba(0,0,0,0.18);
-  transform: translateY(-1px);
-}
-.btn--full { width: 100%; justify-content: center; font-size: 1rem; padding: 18px 28px; }
+.btn--dark  { background: var(--ink); color: #fff; }
+.btn--dark:hover  { background: #333; transform: translateY(-1px); box-shadow: 0 6px 24px rgba(0,0,0,0.18); }
+.btn--outline { background: var(--pill-bg); color: var(--ink); border: 1.5px solid var(--border); backdrop-filter: blur(8px); }
+.btn--outline:hover { background: #fff; border-color: rgba(0,0,0,0.18); transform: translateY(-1px); }
 
 /* ---- NAV ---- */
 .nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  padding: 20px 48px;
-  transition: var(--transition);
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center;
+  padding: 20px 48px; transition: all 0.4s var(--ease);
 }
 .nav--scrolled {
-  background: rgba(242,242,246,0.88);
-  backdrop-filter: blur(16px);
-  padding: 14px 48px;
-  box-shadow: 0 1px 0 var(--border);
+  background: rgba(242,242,246,0.9); backdrop-filter: blur(16px);
+  padding: 14px 48px; box-shadow: 0 1px 0 var(--border);
 }
 .nav__logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  flex: 1;
+  font-family: 'DM Serif Display', serif; font-size: 1.25rem;
+  letter-spacing: -0.02em; flex: 1; text-decoration: none; color: var(--ink);
 }
-.nav__logo em { font-style: italic; }
 .nav__links {
-  display: flex;
-  list-style: none;
-  gap: 36px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex; list-style: none; gap: 32px;
+  position: absolute; left: 50%; transform: translateX(-50%);
 }
 .nav__link {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--ink-mid);
-  text-decoration: none;
-  transition: color 0.2s;
+  font-size: 0.88rem; font-weight: 400; color: var(--ink-mid);
+  text-decoration: none; transition: color 0.2s;
 }
 .nav__link:hover, .nav__link.active { color: var(--ink); font-weight: 500; }
-.nav__hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
-.nav__hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: var(--transition); }
+.nav__hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 4px;
+}
+.nav__hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: all 0.4s var(--ease); }
 
 /* ---- HERO ---- */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 120px 48px 80px;
-  overflow: hidden;
-  text-align: center;
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 130px 48px 80px; overflow: hidden; text-align: center;
 }
 
-/* Subtle grid overlay */
 .hero__grid-overlay {
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background-image:
     linear-gradient(rgba(0,0,0,0.09) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0,0,0,0.09) 1px, transparent 1px);
   background-size: 72px 72px;
   -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 42%, black 0%, black 25%, rgba(0,0,0,0.4) 50%, transparent 72%);
   mask-image: radial-gradient(ellipse 60% 60% at 50% 42%, black 0%, black 25%, rgba(0,0,0,0.4) 50%, transparent 72%);
-  pointer-events: none;
-  z-index: 0;
+  pointer-events: none; z-index: 0;
 }
 
-.hero__content {
-  position: relative;
-  z-index: 2;
-  max-width: 720px;
-  animation: fadeUp 0.9s ease both;
-}
+.hero__content { position: relative; z-index: 2; max-width: 780px; animation: fadeUp 0.9s ease both; }
 
 .hero__badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--pill-bg);
-  border: 1.5px solid var(--border);
-  border-radius: 100px;
-  padding: 8px 18px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--ink-mid);
-  backdrop-filter: blur(8px);
-  margin-bottom: 28px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--pill-bg); border: 1.5px solid var(--border);
+  border-radius: 100px; padding: 8px 18px;
+  font-size: 0.82rem; font-weight: 500; color: var(--ink-mid);
+  backdrop-filter: blur(8px); margin-bottom: 28px;
   animation: fadeUp 0.8s 0.1s ease both;
 }
 
 .hero__title {
-  font-size: clamp(2.8rem, 6vw, 5.5rem);
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-  margin-bottom: 20px;
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px;
   animation: fadeUp 0.9s 0.2s ease both;
 }
 
+.hero__role {
+  font-family: 'DM Sans', sans-serif; font-weight: 300;
+  font-size: 1.15rem; color: var(--ink-mid); margin-bottom: 16px;
+  animation: fadeUp 0.9s 0.25s ease both;
+}
+
 .hero__sub {
-  font-size: 1.05rem;
-  color: var(--ink-mid);
-  font-weight: 300;
-  max-width: 480px;
-  margin: 0 auto 36px;
-  line-height: 1.65;
+  font-size: 1rem; color: var(--ink-mid); font-weight: 300;
+  max-width: 560px; margin: 0 auto 36px; line-height: 1.7;
   animation: fadeUp 0.9s 0.3s ease both;
 }
 
-.hero__ctas {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  animation: fadeUp 0.9s 0.4s ease both;
-}
+.hero__ctas { display: flex; gap: 12px; justify-content: center; animation: fadeUp 0.9s 0.4s ease both; }
 
-/* Floating portraits */
-.hero__portraits {
+/* Floating info bubbles */
+.hero__bubbles { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+
+.bubble {
   position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
+  background: var(--pill-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 14px 20px;
+  backdrop-filter: blur(12px); box-shadow: var(--shadow);
+  font-size: 0.8rem;
 }
+.bubble__label { color: var(--ink-soft); display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
+.bubble__value { color: var(--ink); font-weight: 500; font-size: 0.88rem; }
 
-.portrait {
-  position: absolute;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid rgba(255,255,255,0.9);
-  box-shadow: var(--shadow-lg);
-}
-
-.portrait__img {
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-}
-
-/* Placeholder gradients — replace background-image with real photos */
-.portrait__img--1  { background: linear-gradient(160deg, #d4c5b2 0%, #9a8570 100%); }
-.portrait__img--2  { background: linear-gradient(160deg, #b8c8d4 0%, #6a8090 100%); }
-.portrait__img--3  { background: linear-gradient(160deg, #d4b8c8 0%, #906070 100%); }
-.portrait__img--center { background: linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 100%); }
-
-.portrait--1  { width: 100px; height: 100px; bottom: 18%; left: 12%; animation: floatA 6s ease-in-out infinite; }
-.portrait--2  { width: 76px;  height: 76px;  bottom: 30%; left: 34%; animation: floatB 7s ease-in-out infinite; }
-.portrait--3  { width: 110px; height: 110px; bottom: 18%; right: 10%; animation: floatC 5.5s ease-in-out infinite; }
-.portrait--center { width: 180px; height: 180px; bottom: -20px; left: 50%; transform: translateX(-50%); animation: floatA 8s ease-in-out infinite; }
+.bubble--a { top: 22%; left: 6%; animation: floatA 7s ease-in-out infinite; }
+.bubble--b { top: 28%; right: 5%; animation: floatB 6s ease-in-out infinite; }
+.bubble--c { bottom: 22%; left: 8%; animation: floatC 8s ease-in-out infinite; }
+.bubble--d { bottom: 26%; right: 6%; animation: floatA 5.5s ease-in-out infinite; }
 
 /* Stats row */
 .hero__stats {
-  display: flex;
-  gap: 12px;
-  margin-top: 64px;
-  position: relative;
-  z-index: 2;
+  display: flex; gap: 12px; margin-top: 56px;
+  position: relative; z-index: 2;
   animation: fadeUp 1s 0.6s ease both;
+  flex-wrap: wrap; justify-content: center;
 }
 .stat-pill {
-  background: var(--pill-bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 24px;
-  backdrop-filter: blur(12px);
-  text-align: left;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+  background: var(--pill-bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 16px 28px;
+  backdrop-filter: blur(12px); text-align: left;
+  opacity: 0; transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s;
 }
 .stat-pill.revealed { opacity: 1; transform: translateY(0); }
 .stat-pill:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
-.stat-pill__num  { display: block; font-family: 'DM Serif Display', serif; font-size: 1.9rem; line-height: 1; }
+.stat-pill__num   { display: block; font-family: 'DM Serif Display', serif; font-size: 1.8rem; line-height: 1; }
 .stat-pill__label { display: block; font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; }
 
-/* ---- TRUST BAND ---- */
-.trust {
-  padding: 48px 48px;
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-card);
-  text-align: center;
+/* ---- AFFILIATION BAND ---- */
+.affiliation-band {
+  padding: 36px 48px; border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border); background: var(--bg-card);
+  display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap;
 }
-.trust__label {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 24px;
+.affiliation-band__label {
+  font-size: 0.78rem; color: var(--ink-soft); text-transform: uppercase;
+  letter-spacing: 0.08em; white-space: nowrap;
 }
-.trust__logos {
-  display: flex;
-  justify-content: center;
-  gap: 48px;
-  flex-wrap: wrap;
-}
-.trust__logos span {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
-  letter-spacing: 0.08em;
-  opacity: 0.55;
-  transition: opacity 0.3s;
-  cursor: default;
-}
-.trust__logos span:hover { opacity: 1; }
+.affiliation-band__items { display: flex; gap: 40px; flex-wrap: wrap; align-items: center; }
+.affiliation-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.affiliation-item__name { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--ink); }
+.affiliation-item__sub  { font-size: 0.75rem; color: var(--ink-soft); }
 
 /* ---- SECTION HEADER ---- */
 .section-header { text-align: center; margin-bottom: 56px; }
-.section-header__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin-bottom: 16px;
-  background: rgba(0,0,0,0.04);
-  padding: 7px 16px;
-  border-radius: 100px;
-  border: 1px solid var(--border);
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 500; color: var(--ink-soft);
+  text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 16px;
+  background: rgba(0,0,0,0.04); padding: 7px 16px;
+  border-radius: 100px; border: 1px solid var(--border);
 }
-.section-header__title {
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  letter-spacing: -0.03em;
-  margin-bottom: 14px;
-}
-.section-header__sub { color: var(--ink-mid); font-size: 1rem; font-weight: 300; }
+.section-title { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin-bottom: 14px; }
+.section-sub    { color: var(--ink-mid); font-size: 1rem; font-weight: 300; max-width: 540px; margin: 0 auto; line-height: 1.65; }
 
-/* ---- PORTFOLIO ---- */
-.portfolio {
-  padding: 100px 48px;
-  max-width: 1200px;
-  margin: 0 auto;
+/* ---- ABOUT ---- */
+.about { padding: 100px 48px; max-width: 1200px; margin: 0 auto; }
+.about__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.about__text p { color: var(--ink-mid); font-weight: 300; line-height: 1.8; font-size: 0.98rem; margin-bottom: 20px; }
+.about__focus {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
 }
-.portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 280px 280px;
-  gap: 16px;
-}
-.portfolio__item {
-  text-decoration: none;
-  color: var(--ink);
-  border-radius: var(--radius);
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.portfolio__item.revealed { opacity: 1; transform: translateY(0); }
-.portfolio__item--tall { grid-row: span 2; }
-.portfolio__item--wide { grid-column: span 2; }
+.about__focus h3 { font-size: 1.1rem; margin-bottom: 20px; }
+.focus-item { display: flex; gap: 14px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid var(--border); }
+.focus-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+.focus-item__label { font-size: 0.75rem; font-weight: 500; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.07em; min-width: 90px; padding-top: 2px; }
+.focus-item__value { font-size: 0.9rem; color: var(--ink); line-height: 1.55; }
 
-.portfolio__img {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  min-height: 200px;
-  border-radius: var(--radius);
-  overflow: hidden;
-  transition: transform var(--transition);
+/* ---- RESEARCH ---- */
+.research { padding: 100px 48px; background: var(--bg-card); }
+.research__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.research-card {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 36px;
+  transition: all 0.4s var(--ease);
+  opacity: 0; transform: translateY(24px);
 }
-.portfolio__item--tall .portfolio__img,
-.portfolio__item--wide .portfolio__img {
-  height: calc(100% - 54px);
+.research-card.revealed { opacity: 1; transform: translateY(0); }
+.research-card:hover { background: var(--bg-card); box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+.research-card__num {
+  font-family: 'DM Serif Display', serif; font-size: 2.2rem;
+  color: var(--border); line-height: 1; margin-bottom: 16px;
 }
-.portfolio__item:not(.portfolio__item--tall):not(.portfolio__item--wide) .portfolio__img {
-  height: calc(100% - 54px);
+.research-card h3 { font-size: 1.15rem; letter-spacing: -0.02em; margin-bottom: 12px; }
+.research-card p  { color: var(--ink-mid); font-weight: 300; line-height: 1.65; font-size: 0.9rem; margin-bottom: 20px; }
+.research-card__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+.tag {
+  background: rgba(0,0,0,0.06); color: var(--ink-mid);
+  font-size: 0.74rem; font-weight: 500; padding: 5px 12px;
+  border-radius: 100px; letter-spacing: 0.02em;
 }
+.research-card__outcome {
+  font-size: 0.82rem; color: var(--ink-mid); font-style: italic;
+  border-top: 1px solid var(--border); padding-top: 14px; line-height: 1.55;
+}
+.research-card__outcome strong { color: var(--ink); font-style: normal; }
 
-.portfolio__item:hover .portfolio__img { transform: scale(1.03); }
+/* ---- PUBLICATIONS ---- */
+.publications { padding: 100px 48px; max-width: 1100px; margin: 0 auto; }
+.pub-list { display: flex; flex-direction: column; gap: 16px; }
+.pub-card {
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 28px 32px;
+  display: flex; gap: 24px; align-items: flex-start;
+  transition: all 0.4s var(--ease);
+  opacity: 0; transform: translateY(20px);
+}
+.pub-card.revealed { opacity: 1; transform: translateY(0); }
+.pub-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.pub-card__badge {
+  background: var(--ink); color: #fff;
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em;
+  text-transform: uppercase; padding: 5px 12px; border-radius: 100px;
+  white-space: nowrap; flex-shrink: 0; align-self: flex-start; margin-top: 2px;
+}
+.pub-card__badge--co { background: var(--bg); color: var(--ink-mid); border: 1.5px solid var(--border); }
+.pub-card__badge--pre { background: #f5f0e8; color: #7a6040; border: 1.5px solid #e0d4bc; }
+.pub-card__body { flex: 1; }
+.pub-card h3 { font-size: 1rem; font-weight: 500; font-family: 'DM Sans', sans-serif; line-height: 1.45; margin-bottom: 6px; }
+.pub-card__meta { font-size: 0.82rem; color: var(--ink-soft); }
+.pub-card__meta em { font-style: italic; color: var(--ink-mid); }
 
-.portfolio__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.35) 100%);
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  padding: 16px 18px;
-  opacity: 0;
-  transition: opacity 0.4s ease;
+/* ---- SKILLS ---- */
+.skills { padding: 100px 48px; background: var(--bg-card); }
+.skills__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1100px; margin: 0 auto; }
+.skill-card {
+  background: var(--bg); border: 1.5px solid var(--border);
+  border-radius: var(--radius); padding: 32px;
+  transition: all 0.4s var(--ease);
+  opacity: 0; transform: translateY(24px);
 }
-.portfolio__item:hover .portfolio__overlay { opacity: 1; }
-.portfolio__tag {
-  background: rgba(255,255,255,0.9);
-  color: var(--ink);
-  font-size: 0.75rem;
-  font-weight: 500;
-  padding: 4px 12px;
-  border-radius: 100px;
-}
-.portfolio__year { color: rgba(255,255,255,0.85); font-size: 0.8rem; font-weight: 300; }
-
-.portfolio__meta {
-  padding: 12px 4px 0;
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-}
-.portfolio__meta h3 { font-size: 1rem; font-weight: 500; }
-.portfolio__meta span { font-size: 0.82rem; color: var(--ink-soft); }
-
-.portfolio__cta { text-align: center; margin-top: 48px; }
-
-/* ---- SERVICES ---- */
-.services {
-  padding: 100px 48px;
-  background: var(--bg-card);
-}
-.services__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.service-card {
-  background: var(--bg);
-  border-radius: var(--radius);
-  padding: 40px;
-  border: 1.5px solid var(--border);
-  transition: var(--transition);
-  opacity: 0;
-  transform: translateY(24px);
-}
-.service-card.revealed { opacity: 1; transform: translateY(0); }
-.service-card:hover {
-  background: var(--bg-card);
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-4px);
-}
-.service-card__num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 2.5rem;
-  color: var(--border);
-  margin-bottom: 16px;
-  line-height: 1;
-}
-.service-card h3 { font-size: 1.3rem; margin-bottom: 12px; letter-spacing: -0.02em; }
-.service-card p  { color: var(--ink-mid); font-weight: 300; line-height: 1.65; font-size: 0.95rem; }
-
-/* ---- TESTIMONIALS ---- */
-.testimonials {
-  padding: 100px 48px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.testimonials__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.testimonial-card {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius);
-  padding: 36px;
-  transition: var(--transition);
-  opacity: 0;
-  transform: translateY(24px);
-}
-.testimonial-card.revealed { opacity: 1; transform: translateY(0); }
-.testimonial-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
-.testimonial-card__stars { color: var(--ink); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 18px; }
-.testimonial-card p { font-size: 0.95rem; color: var(--ink-mid); font-weight: 300; line-height: 1.7; font-style: italic; margin-bottom: 24px; }
-.testimonial-card__author { display: flex; gap: 12px; align-items: center; }
-.testimonial-card__avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; }
-.testimonial-card__author strong { display: block; font-size: 0.9rem; font-weight: 500; }
-.testimonial-card__author span   { display: block; font-size: 0.78rem; color: var(--ink-soft); }
+.skill-card.revealed { opacity: 1; transform: translateY(0); }
+.skill-card:hover { background: var(--bg-card); box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.skill-card__icon { font-size: 1.6rem; margin-bottom: 16px; }
+.skill-card h3 { font-size: 1rem; letter-spacing: -0.01em; margin-bottom: 16px; }
+.skill-card ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.skill-card li { font-size: 0.84rem; color: var(--ink-mid); font-weight: 300; padding-left: 14px; position: relative; line-height: 1.4; }
+.skill-card li::before { content: '—'; position: absolute; left: 0; color: var(--ink-soft); font-size: 0.7rem; top: 3px; }
 
 /* ---- CONTACT ---- */
-.contact {
-  padding: 100px 48px;
-  background: var(--bg-card);
-  border-top: 1px solid var(--border);
+.contact { padding: 100px 48px; border-top: 1px solid var(--border); }
+.contact__inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.contact__title { font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -0.03em; margin: 16px 0 14px; }
+.contact__sub { color: var(--ink-mid); font-weight: 300; margin-bottom: 48px; line-height: 1.65; }
+.contact__links { display: flex; flex-direction: column; gap: 14px; text-align: left; }
+.contact-item {
+  display: flex; align-items: center; gap: 18px;
+  background: var(--bg-card); border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm); padding: 18px 24px;
+  text-decoration: none; color: var(--ink);
+  transition: all 0.4s var(--ease);
 }
-.contact__inner {
-  max-width: 640px;
-  margin: 0 auto;
-  text-align: center;
-}
-.contact__title {
-  font-size: clamp(2rem, 4vw, 3rem);
-  letter-spacing: -0.03em;
-  margin: 16px 0 14px;
-}
-.contact__sub {
-  color: var(--ink-mid);
-  font-weight: 300;
-  margin-bottom: 48px;
-  line-height: 1.65;
-}
-.contact__form { text-align: left; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.form-group { margin-bottom: 20px; }
-.form-group label {
-  display: block;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--ink-mid);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 8px;
-}
-.form-group input,
-.form-group select,
-.form-group textarea {
-  width: 100%;
-  background: var(--bg);
-  border: 1.5px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 14px 16px;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 0.95rem;
-  color: var(--ink);
-  outline: none;
-  transition: border-color 0.25s, box-shadow 0.25s;
-  appearance: none;
-}
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  border-color: rgba(0,0,0,0.3);
-  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
-}
-.form-group textarea { resize: vertical; min-height: 130px; }
+.contact-item:hover { box-shadow: var(--shadow-lg); transform: translateX(4px); }
+.contact-item__icon { font-size: 1.1rem; width: 38px; height: 38px; background: var(--bg); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.contact-item__label { font-size: 0.75rem; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.07em; display: block; margin-bottom: 2px; }
+.contact-item__value { font-size: 0.9rem; font-weight: 500; }
+.contact-item__arrow { margin-left: auto; color: var(--ink-soft); font-size: 1rem; }
 
 /* ---- FOOTER ---- */
-.footer {
-  background: var(--ink);
-  color: rgba(255,255,255,0.7);
-  padding: 64px 48px 32px;
-}
-.footer__top { display: grid; grid-template-columns: 1fr auto; gap: 64px; margin-bottom: 56px; }
-.footer__logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.4rem;
-  color: #fff;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-}
-.footer__brand p { font-size: 0.88rem; font-weight: 300; max-width: 240px; line-height: 1.6; }
-.footer__links { display: flex; gap: 48px; }
-.footer__col { display: flex; flex-direction: column; gap: 12px; }
-.footer__col h4 { color: #fff; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
-.footer__col a  { font-size: 0.88rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer { background: var(--ink); color: rgba(255,255,255,0.6); padding: 56px 48px 28px; }
+.footer__top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 48px; flex-wrap: wrap; gap: 40px; }
+.footer__logo { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: #fff; margin-bottom: 10px; }
+.footer__brand p { font-size: 0.85rem; font-weight: 300; max-width: 260px; line-height: 1.6; }
+.footer__nav { display: flex; gap: 48px; }
+.footer__col { display: flex; flex-direction: column; gap: 10px; }
+.footer__col h4 { color: #fff; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.footer__col a  { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; }
 .footer__col a:hover { color: #fff; }
 .footer__bottom {
-  border-top: 1px solid rgba(255,255,255,0.1);
-  padding-top: 24px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.35);
+  border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px;
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem; color: rgba(255,255,255,0.3); flex-wrap: wrap; gap: 8px;
 }
 
 /* ---- ANIMATIONS ---- */
@@ -550,78 +327,76 @@ em { font-style: italic; }
 }
 @keyframes floatA {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-14px); }
+  50%       { transform: translateY(-12px); }
 }
 @keyframes floatB {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+  50%       { transform: translateY(-9px); }
 }
 @keyframes floatC {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-18px); }
+  50%       { transform: translateY(-15px); }
 }
 
 /* ---- RESPONSIVE ---- */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .nav { padding: 16px 24px; }
   .nav--scrolled { padding: 12px 24px; }
-  .nav__links { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(242,242,246,0.97); backdrop-filter: blur(16px); flex-direction: column; gap: 0; padding: 16px 0; border-bottom: 1px solid var(--border); }
-  .nav__links li a { display: block; padding: 14px 28px; font-size: 1rem; }
+  .nav__links {
+    display: none; position: fixed; top: 60px; left: 0; right: 0;
+    background: rgba(242,242,246,0.97); backdrop-filter: blur(16px);
+    flex-direction: column; gap: 0; padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav__links li a { display: block; padding: 13px 28px; font-size: 1rem; }
   .nav__links--open { display: flex; }
   .nav__hamburger { display: flex; }
   .nav .btn--dark { display: none; }
 
   .hero { padding: 100px 24px 60px; }
-  .hero__stats { flex-direction: column; gap: 10px; }
-  .stat-pill { text-align: center; }
+  .bubble--a, .bubble--b, .bubble--c, .bubble--d { display: none; }
 
-  .portfolio { padding: 80px 24px; }
-  .portfolio__grid {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-  }
-  .portfolio__item--tall { grid-row: span 1; }
-  .portfolio__item--wide { grid-column: span 2; }
+  .about { padding: 80px 24px; }
+  .about__grid { grid-template-columns: 1fr; }
 
-  .services { padding: 80px 24px; }
-  .services__grid { grid-template-columns: 1fr; }
+  .research { padding: 80px 24px; }
+  .research__grid { grid-template-columns: 1fr; }
 
-  .testimonials { padding: 80px 24px; }
-  .testimonials__grid { grid-template-columns: 1fr; }
+  .publications { padding: 80px 24px; }
+
+  .skills { padding: 80px 24px; }
+  .skills__grid { grid-template-columns: repeat(2, 1fr); }
 
   .contact { padding: 80px 24px; }
-  .form-row { grid-template-columns: 1fr; }
 
   .footer { padding: 48px 24px 24px; }
-  .footer__top { grid-template-columns: 1fr; gap: 40px; }
-  .footer__bottom { flex-direction: column; gap: 8px; }
+  .footer__top { flex-direction: column; }
+  .footer__bottom { flex-direction: column; }
 }
 
 @media (max-width: 600px) {
-  .portfolio__grid { grid-template-columns: 1fr; }
-  .portfolio__item--wide { grid-column: span 1; }
-  .hero__title { font-size: 2.4rem; }
-  .portrait--1, .portrait--2, .portrait--3 { display: none; }
-  .portrait--center { width: 130px; height: 130px; }
+  .hero__title { font-size: 2.5rem; }
+  .hero__stats { flex-direction: column; gap: 10px; }
+  .skills__grid { grid-template-columns: 1fr; }
+  .pub-card { flex-direction: column; gap: 12px; }
+  .affiliation-band { flex-direction: column; gap: 20px; }
 }
-
-</style>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
-    <div class="nav__logo">Luminae</div>
+  <nav class="nav" id="top">
+    <a href="#top" class="nav__logo">Kabir Hossen<em>.</em></a>
     <ul class="nav__links">
-      <li><a href="#" class="nav__link active">Home</a></li>
-      <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
-      <li><a href="#blog" class="nav__link">Blog</a></li>
-      <li><a href="#about" class="nav__link">About</a></li>
+      <li><a href="#top"          class="nav__link active">Home</a></li>
+      <li><a href="#about"        class="nav__link">About</a></li>
+      <li><a href="#research"     class="nav__link">Research</a></li>
+      <li><a href="#publications" class="nav__link">Publications</a></li>
+      <li><a href="#skills"       class="nav__link">Skills</a></li>
+      <li><a href="#contact"      class="nav__link">Contact</a></li>
     </ul>
-    <a href="#contact" class="btn btn--dark">Get In Touch</a>
+    <a href="https://kabirmhossen.github.io/cv.pdf" target="_blank" class="btn btn--dark">Download CV</a>
     <button class="nav__hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -631,211 +406,262 @@ em { font-style: italic; }
   <section class="hero">
     <div class="hero__grid-overlay"></div>
 
+    <!-- Floating info bubbles -->
+    <div class="hero__bubbles">
+      <div class="bubble bubble--a">
+        <span class="bubble__label">Affiliation</span>
+        <span class="bubble__value">CHRF, Bangladesh</span>
+      </div>
+      <div class="bubble bubble--b">
+        <span class="bubble__label">Focus</span>
+        <span class="bubble__value">Single-Cell Genomics</span>
+      </div>
+      <div class="bubble bubble--c">
+        <span class="bubble__label">Training</span>
+        <span class="bubble__value">SUST — BMB</span>
+      </div>
+      <div class="bubble bubble--d">
+        <span class="bubble__label">Publications</span>
+        <span class="bubble__value">4+ Scholarly Works</span>
+      </div>
+    </div>
+
     <div class="hero__content">
       <div class="hero__badge">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
-        Creative Photography
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Research Officer · Computational Biology
       </div>
-      <h1 class="hero__title">Captivating<br /><em>Visual Stories</em></h1>
-      <p class="hero__sub">Meticulously composed visuals, enhanced by strategic lighting and refined artistic guidance.</p>
+      <h1 class="hero__title">Kabir<br /><em>Hossen</em></h1>
+      <p class="hero__role">Single-Cell Genomics & Host-Pathogen Biology</p>
+      <p class="hero__sub">I work at the intersection of transcriptomics, host-pathogen biology, and computational modeling — integrating sequencing data, bioinformatics, and machine learning to study disease mechanisms.</p>
       <div class="hero__ctas">
-        <a href="#contact" class="btn btn--dark">Get In Touch</a>
-        <a href="#portfolio" class="btn btn--outline">View Portfolio</a>
+        <a href="https://kabirmhossen.github.io/cv.pdf" target="_blank" class="btn btn--dark">Download CV</a>
+        <a href="#research" class="btn btn--outline">View Research</a>
       </div>
     </div>
 
-    <!-- Floating portrait bubbles -->
-    <div class="hero__portraits">
-      <div class="portrait portrait--1">
-        <div class="portrait__img portrait__img--1"></div>
-      </div>
-      <div class="portrait portrait--2">
-        <div class="portrait__img portrait__img--2"></div>
-      </div>
-      <div class="portrait portrait--3">
-        <div class="portrait__img portrait__img--3"></div>
-      </div>
-      <div class="portrait portrait--center">
-        <div class="portrait__img portrait__img--center"></div>
-      </div>
-    </div>
-
-    <!-- Stat pills -->
     <div class="hero__stats">
       <div class="stat-pill">
-        <span class="stat-pill__num">8+</span>
-        <span class="stat-pill__label">Years of experience</span>
+        <span class="stat-pill__num">4+</span>
+        <span class="stat-pill__label">Publications</span>
       </div>
       <div class="stat-pill">
-        <span class="stat-pill__num">100+</span>
-        <span class="stat-pill__label">Projects completed</span>
+        <span class="stat-pill__num">4</span>
+        <span class="stat-pill__label">Research projects</span>
       </div>
       <div class="stat-pill">
-        <span class="stat-pill__num">40+</span>
-        <span class="stat-pill__label">Happy clients</span>
+        <span class="stat-pill__num">scRNA</span>
+        <span class="stat-pill__label">seq specialist</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__num">ML</span>
+        <span class="stat-pill__label">Biomarker discovery</span>
       </div>
     </div>
   </section>
 
-  <!-- TRUST BAND -->
-  <section class="trust">
-    <p class="trust__label">Trusted Globally by Brands and Creatives</p>
-    <div class="trust__logos">
-      <span>VELOS</span><span>HANDUX</span><span>HALOZA</span><span>NASYO</span><span>PETYU</span><span>ORION</span>
+  <!-- AFFILIATION BAND -->
+  <div class="affiliation-band">
+    <span class="affiliation-band__label">Affiliations</span>
+    <div class="affiliation-band__items">
+      <div class="affiliation-item">
+        <span class="affiliation-item__name">CHRF</span>
+        <span class="affiliation-item__sub">Child Health Research Foundation</span>
+      </div>
+      <div class="affiliation-item">
+        <span class="affiliation-item__name">SUST</span>
+        <span class="affiliation-item__sub">Shahjalal University of Sci & Tech</span>
+      </div>
+      <div class="affiliation-item">
+        <span class="affiliation-item__name">Scientific Reports</span>
+        <span class="affiliation-item__sub">First-author publication</span>
+      </div>
+      <div class="affiliation-item">
+        <span class="affiliation-item__name">Lancet Microbe</span>
+        <span class="affiliation-item__sub">Contributing author</span>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- PORTFOLIO -->
-  <section class="portfolio" id="portfolio">
+  <!-- ABOUT -->
+  <section class="about" id="about">
     <div class="section-header">
-      <div class="section-header__eyebrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
-        My Work
+      <div class="eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        About
       </div>
-      <h2 class="section-header__title">A lens into<br /><em>my world</em></h2>
-      <p class="section-header__sub">I capture your vision through creative photography.</p>
+      <h2 class="section-title">Academic background &<br /><em>research perspective</em></h2>
     </div>
-
-    <div class="portfolio__grid">
-      <a href="#" class="portfolio__item portfolio__item--tall">
-        <div class="portfolio__img" style="background: linear-gradient(135deg, #c8b8a2 0%, #8a7360 100%);">
-          <div class="portfolio__overlay">
-            <span class="portfolio__tag">Nature</span>
-            <span class="portfolio__year">2026</span>
-          </div>
-        </div>
-        <div class="portfolio__meta">
-          <h3>Into the Wild</h3>
-          <span>Nature Series →</span>
-        </div>
-      </a>
-      <a href="#" class="portfolio__item">
-        <div class="portfolio__img" style="background: linear-gradient(135deg, #a2b4c8 0%, #607080 100%);">
-          <div class="portfolio__overlay">
-            <span class="portfolio__tag">Travel</span>
-            <span class="portfolio__year">2025</span>
-          </div>
-        </div>
-        <div class="portfolio__meta">
-          <h3>Distant Horizons</h3>
-          <span>Travel Series →</span>
-        </div>
-      </a>
-      <a href="#" class="portfolio__item">
-        <div class="portfolio__img" style="background: linear-gradient(135deg, #c2a8c8 0%, #705a78 100%);">
-          <div class="portfolio__overlay">
-            <span class="portfolio__tag">Urban</span>
-            <span class="portfolio__year">2024</span>
-          </div>
-        </div>
-        <div class="portfolio__meta">
-          <h3>City Pulse</h3>
-          <span>Urban Series →</span>
-        </div>
-      </a>
-      <a href="#" class="portfolio__item portfolio__item--wide">
-        <div class="portfolio__img" style="background: linear-gradient(135deg, #c8c2a2 0%, #706050 100%);">
-          <div class="portfolio__overlay">
-            <span class="portfolio__tag">Emotion</span>
-            <span class="portfolio__year">2024</span>
-          </div>
-        </div>
-        <div class="portfolio__meta">
-          <h3>Raw Emotion</h3>
-          <span>Portrait Series →</span>
-        </div>
-      </a>
-      <a href="#" class="portfolio__item">
-        <div class="portfolio__img" style="background: linear-gradient(135deg, #a8c8b8 0%, #507060 100%);">
-          <div class="portfolio__overlay">
-            <span class="portfolio__tag">Fashion</span>
-            <span class="portfolio__year">2023</span>
-          </div>
-        </div>
-        <div class="portfolio__meta">
-          <h3>Thread & Light</h3>
-          <span>Fashion Series →</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="portfolio__cta">
-      <a href="#" class="btn btn--outline">View Full Portfolio</a>
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="services" id="about">
-    <div class="section-header">
-      <div class="section-header__eyebrow">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        Services
+    <div class="about__grid">
+      <div class="about__text">
+        <p>My work is shaped by a dual interest in molecular biology and data-driven biological discovery. I am a Research Officer at the Child Health Research Foundation (CHRF), with academic training in Biochemistry and Molecular Biology from Shahjalal University of Science and Technology (SUST).</p>
+        <p>My research centers on using genomics and computational methods to understand disease biology, especially in the context of infection, immune response, and cellular heterogeneity. Across my projects, I have worked with single-cell RNA sequencing, bulk transcriptomics, metagenomics, statistical modeling, and machine learning.</p>
+        <p>I am particularly interested in how computational analysis can uncover interpretable biological patterns from high-dimensional data while remaining grounded in experimental and clinical context.</p>
+        <p>My longer-term goal is to contribute to research that integrates wet-lab and computational approaches to address clinically meaningful questions in genomics, host-pathogen interaction, and molecular disease mechanisms.</p>
       </div>
-      <h2 class="section-header__title">What I offer</h2>
-    </div>
-    <div class="services__grid">
-      <div class="service-card">
-        <div class="service-card__num">01</div>
-        <h3>Portrait Sessions</h3>
-        <p>Intimate, thoughtful portraits that reveal character — from personal headshots to editorial campaigns.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__num">02</div>
-        <h3>Commercial Photography</h3>
-        <p>Brand-aligned imagery crafted to elevate products, spaces, and editorial stories.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__num">03</div>
-        <h3>Event Coverage</h3>
-        <p>Candid, documentary-style coverage that captures the energy and emotion of every moment.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-card__num">04</div>
-        <h3>Creative Direction</h3>
-        <p>Full creative concept development — from mood boards to final retouching — for cohesive visual identity.</p>
+      <div class="about__focus">
+        <h3>Current Focus</h3>
+        <div class="focus-item">
+          <span class="focus-item__label">Affiliation</span>
+          <span class="focus-item__value">Child Health Research Foundation (CHRF)</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-item__label">Training</span>
+          <span class="focus-item__value">Biochemistry & Molecular Biology, SUST</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-item__label">Research</span>
+          <span class="focus-item__value">Single-cell genomics, transcriptomics, host-pathogen interaction, computational biology</span>
+        </div>
+        <div class="focus-item">
+          <span class="focus-item__label">Approach</span>
+          <span class="focus-item__value">Combining wet-lab insight with reproducible computational analysis and machine learning</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
-  <section class="testimonials">
+  <!-- RESEARCH -->
+  <section class="research" id="research">
     <div class="section-header">
-      <div class="section-header__eyebrow">Kind words</div>
-      <h2 class="section-header__title">What clients say</h2>
+      <div class="eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Research Experience
+      </div>
+      <h2 class="section-title">Selected<br /><em>projects</em></h2>
+      <p class="section-sub">A consistent focus on extracting biologically interpretable signals from sequencing data using rigorous analytical workflows.</p>
     </div>
-    <div class="testimonials__grid">
-      <div class="testimonial-card">
-        <div class="testimonial-card__stars">★★★★★</div>
-        <p>"Absolutely transformed how we present our brand. Every shot is intentional and stunning."</p>
-        <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar" style="background:#c2a8c8;"></div>
-          <div>
-            <strong>Nadia K.</strong>
-            <span>Creative Director, Haloza</span>
-          </div>
+    <div class="research__grid">
+      <div class="research-card">
+        <div class="research-card__num">01</div>
+        <h3>Pediatric Single-Cell Atlas of the Nasopharynx</h3>
+        <p>Developed and analyzed single-cell transcriptomic datasets to characterize epithelial and immune cell states in pediatric nasopharyngeal tissue, with emphasis on infection-associated remodeling and host-pathogen interactions.</p>
+        <div class="research-card__tags">
+          <span class="tag">scRNA-seq</span><span class="tag">Seurat</span><span class="tag">SingleR</span><span class="tag">Cell annotation</span>
+        </div>
+        <div class="research-card__outcome"><strong>Key outcome:</strong> Contributed to atlas-scale analysis of pediatric mucosal cellular diversity and infection-linked cell-state variation.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-card__num">02</div>
+        <h3>Mpox Transcriptomics Biomarker Study</h3>
+        <p>Performed transcriptomic analysis and machine-learning-based biomarker discovery to identify candidate genes associated with Mpox infection, integrating differential expression results with classification modeling and biological interpretation.</p>
+        <div class="research-card__tags">
+          <span class="tag">DESeq2</span><span class="tag">Machine learning</span><span class="tag">Biomarker discovery</span><span class="tag">ROC/AUPRC</span>
+        </div>
+        <div class="research-card__outcome"><strong>Key outcome:</strong> Identified candidate transcriptomic biomarkers — first-author publication in <em>Scientific Reports</em>.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-card__num">03</div>
+        <h3>Deep Learning for Cancer Latent Profiling</h3>
+        <p>Applied variational autoencoders to transcriptomic data to learn latent representations of tumor biology and used attribution-based interpretation to identify genes associated with latent disease structure and classification performance.</p>
+        <div class="research-card__tags">
+          <span class="tag">VAE</span><span class="tag">Integrated Gradients</span><span class="tag">Latent space</span><span class="tag">Python</span>
+        </div>
+        <div class="research-card__outcome"><strong>Key outcome:</strong> Used deep representation learning to prioritize biologically meaningful latent drivers in cancer transcriptomic profiles.</div>
+      </div>
+      <div class="research-card">
+        <div class="research-card__num">04</div>
+        <h3>Metagenomics for Meningitis Pathogen Detection</h3>
+        <p>Worked on metagenomic sequencing analysis for pathogen detection in clinically complex meningitis cases, integrating microbial identification, genomic interpretation, and clinical contextualization for improved understanding of suspected infections.</p>
+        <div class="research-card__tags">
+          <span class="tag">Metagenomics</span><span class="tag">Pathogen detection</span><span class="tag">Genome analysis</span><span class="tag">Clinical genomics</span>
+        </div>
+        <div class="research-card__outcome"><strong>Key outcome:</strong> Supported sequencing-based detection of pathogens where conventional diagnostic signals were limited.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="publications" id="publications">
+    <div class="section-header">
+      <div class="eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Publications & Preprints
+      </div>
+      <h2 class="section-title">Selected<br /><em>scholarly output</em></h2>
+    </div>
+    <div class="pub-list">
+      <div class="pub-card">
+        <span class="pub-card__badge">First Author</span>
+        <div class="pub-card__body">
+          <h3>Transcriptomic biomarker discovery in Mpox infection</h3>
+          <p class="pub-card__meta">Kabir Hossen <strong>et al.</strong> · <em>Scientific Reports</em></p>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-card__stars">★★★★★</div>
-        <p>"The attention to light and composition is unmatched. Our campaign imagery exceeded all expectations."</p>
-        <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar" style="background:#a2b4c8;"></div>
-          <div>
-            <strong>Marcus T.</strong>
-            <span>CEO, Velos Studio</span>
-          </div>
+      <div class="pub-card">
+        <span class="pub-card__badge pub-card__badge--co">Co-author</span>
+        <div class="pub-card__body">
+          <h3>VirusTaxo: machine-learning-based viral taxonomy classification from metagenomic sequences</h3>
+          <p class="pub-card__meta">Co-author · <em>Genomics</em></p>
         </div>
       </div>
-      <div class="testimonial-card">
-        <div class="testimonial-card__stars">★★★★★</div>
-        <p>"Working with Luminae felt like genuine collaboration. They understood our vision immediately."</p>
-        <div class="testimonial-card__author">
-          <div class="testimonial-card__avatar" style="background:#c8b8a2;"></div>
-          <div>
-            <strong>Amara S.</strong>
-            <span>Brand Manager, Petyu</span>
-          </div>
+      <div class="pub-card">
+        <span class="pub-card__badge pub-card__badge--co">Contributing</span>
+        <div class="pub-card__body">
+          <h3>Metagenomic investigation of meningitis-associated pathogens</h3>
+          <p class="pub-card__meta">Contributing author · <em>Lancet Microbe</em> — submitted / under review</p>
         </div>
+      </div>
+      <div class="pub-card">
+        <span class="pub-card__badge pub-card__badge--pre">Preprint</span>
+        <div class="pub-card__body">
+          <h3>Neuroinvasive Human Parvovirus 4 and mortality in pediatric patients</h3>
+          <p class="pub-card__meta">Contributing author · <em>medRxiv</em> preprint</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills">
+    <div class="section-header">
+      <div class="eyebrow">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Technical Competencies
+      </div>
+      <h2 class="section-title">Skills &<br /><em>expertise</em></h2>
+      <p class="section-sub">A cross-disciplinary skill set spanning molecular techniques, computational analysis, and reproducible data workflows.</p>
+    </div>
+    <div class="skills__grid">
+      <div class="skill-card">
+        <div class="skill-card__icon">🧪</div>
+        <h3>Wet Lab</h3>
+        <ul>
+          <li>RNA extraction & nucleic acid handling</li>
+          <li>qPCR & gene expression validation</li>
+          <li>Sample preparation & library-prep</li>
+          <li>Transcriptomics workflows</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">🔬</div>
+        <h3>Bioinformatics</h3>
+        <ul>
+          <li>Seurat, SingleR, celldex</li>
+          <li>DESeq2, differential expression</li>
+          <li>WGCNA, enrichment analysis</li>
+          <li>Single-cell & bulk RNA-seq</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">💻</div>
+        <h3>Programming</h3>
+        <ul>
+          <li>R & Python for data analysis</li>
+          <li>ML model development & evaluation</li>
+          <li>Deep learning for biological data</li>
+          <li>Reproducible scripting & pipelines</li>
+        </ul>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card__icon">⚙️</div>
+        <h3>Tools & Infra</h3>
+        <ul>
+          <li>Docker & containerized workflows</li>
+          <li>Terra & cloud-based analysis</li>
+          <li>GitHub version control</li>
+          <li>HTS data processing pipelines</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -843,37 +669,45 @@ em { font-style: italic; }
   <!-- CONTACT -->
   <section class="contact" id="contact">
     <div class="contact__inner">
-      <div class="section-header__eyebrow" style="justify-content:center;">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        Let's Connect
+      <div class="eyebrow" style="justify-content:center; margin-bottom:16px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get In Touch
       </div>
-      <h2 class="contact__title">Ready to create<br /><em>something beautiful?</em></h2>
-      <p class="contact__sub">Whether you have a project in mind or just want to chat, I'd love to hear from you.</p>
-      <div class="contact__form">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Your Name</label>
-            <input type="text" placeholder="Alex Johnson" />
-          </div>
-          <div class="form-group">
-            <label>Email Address</label>
-            <input type="email" placeholder="alex@studio.com" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Project Type</label>
-          <select>
-            <option>Portrait Session</option>
-            <option>Commercial Photography</option>
-            <option>Event Coverage</option>
-            <option>Creative Direction</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Tell me about your project</label>
-          <textarea placeholder="Describe your vision..."></textarea>
-        </div>
-        <button class="btn btn--dark btn--full">Send Message</button>
+      <h2 class="contact__title">Open to collaboration<br /><em>&amp; PhD opportunities</em></h2>
+      <p class="contact__sub">I welcome opportunities for research collaboration, academic discussion, and PhD-related communication.</p>
+      <div class="contact__links">
+        <a href="mailto:your.email@example.com" class="contact-item">
+          <span class="contact-item__icon">✉️</span>
+          <span>
+            <span class="contact-item__label">Email</span>
+            <span class="contact-item__value">your.email@example.com</span>
+          </span>
+          <span class="contact-item__arrow">→</span>
+        </a>
+        <a href="https://github.com/kabirmhossen" target="_blank" class="contact-item">
+          <span class="contact-item__icon">🐙</span>
+          <span>
+            <span class="contact-item__label">GitHub</span>
+            <span class="contact-item__value">github.com/kabirmhossen</span>
+          </span>
+          <span class="contact-item__arrow">→</span>
+        </a>
+        <a href="#" target="_blank" class="contact-item">
+          <span class="contact-item__icon">💼</span>
+          <span>
+            <span class="contact-item__label">LinkedIn</span>
+            <span class="contact-item__value">linkedin.com/in/your-profile</span>
+          </span>
+          <span class="contact-item__arrow">→</span>
+        </a>
+        <a href="#" target="_blank" class="contact-item">
+          <span class="contact-item__icon">🎓</span>
+          <span>
+            <span class="contact-item__label">Google Scholar</span>
+            <span class="contact-item__value">Scholar profile</span>
+          </span>
+          <span class="contact-item__arrow">→</span>
+        </a>
       </div>
     </div>
   </section>
@@ -882,58 +716,73 @@ em { font-style: italic; }
   <footer class="footer">
     <div class="footer__top">
       <div class="footer__brand">
-        <div class="footer__logo">Luminae</div>
-        <p>Capturing moments that matter, one frame at a time.</p>
+        <div class="footer__logo">Kabir Hossen<em>.</em></div>
+        <p>Research Officer — Computational Biology & Single-Cell Genomics, CHRF Bangladesh.</p>
       </div>
-      <div class="footer__links">
+      <div class="footer__nav">
         <div class="footer__col">
           <h4>Navigate</h4>
-          <a href="#">Home</a>
-          <a href="#portfolio">Portfolio</a>
+          <a href="#top">Home</a>
           <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#research">Research</a>
+          <a href="#publications">Publications</a>
+          <a href="#skills">Skills</a>
         </div>
         <div class="footer__col">
           <h4>Connect</h4>
-          <a href="#">Instagram</a>
-          <a href="#">Behance</a>
+          <a href="mailto:your.email@example.com">Email</a>
+          <a href="https://github.com/kabirmhossen" target="_blank">GitHub</a>
           <a href="#">LinkedIn</a>
-          <a href="#">500px</a>
+          <a href="#">Google Scholar</a>
         </div>
       </div>
     </div>
     <div class="footer__bottom">
-      <span>© 2026 Luminae. All rights reserved.</span>
-      <span>Made with care & light</span>
+      <span>© 2026 Kabir Hossen. All rights reserved.</span>
+      <span>Computational Biology · Single-Cell Genomics</span>
     </div>
   </footer>
 
   <script>
-    // Navbar scroll effect
+    // Navbar scroll
     const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('nav--scrolled', window.scrollY > 40);
     });
 
-    // Hamburger menu
-    const hamburger = document.querySelector('.nav__hamburger');
-    const navLinks = document.querySelector('.nav__links');
-    hamburger.addEventListener('click', () => {
-      navLinks.classList.toggle('nav__links--open');
-      hamburger.classList.toggle('nav__hamburger--open');
-    });
-
-    // Scroll reveal
-    const revealEls = document.querySelectorAll('.portfolio__item, .service-card, .testimonial-card, .stat-pill');
+    // Active nav link on scroll
+    const sections = document.querySelectorAll('section[id], nav[id]');
+    const navLinks = document.querySelectorAll('.nav__link');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          e.target.classList.add('revealed');
-          observer.unobserve(e.target);
+          navLinks.forEach(l => l.classList.remove('active'));
+          const active = document.querySelector(`.nav__link[href="#${e.target.id}"]`);
+          if (active) active.classList.add('active');
         }
       });
-    }, { threshold: 0.12 });
-    revealEls.forEach(el => observer.observe(el));
+    }, { threshold: 0.4 });
+    sections.forEach(s => observer.observe(s));
+
+    // Hamburger
+    const hamburger = document.querySelector('.nav__hamburger');
+    const navMenu = document.querySelector('.nav__links');
+    hamburger.addEventListener('click', () => {
+      navMenu.classList.toggle('nav__links--open');
+    });
+    navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('nav__links--open')));
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.research-card, .skill-card, .pub-card, .stat-pill');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('revealed'), i * 80);
+          revealObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObserver.observe(el));
   </script>
 </body>
 </html>
