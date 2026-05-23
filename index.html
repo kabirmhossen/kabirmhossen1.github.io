@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lightory — Photography & Visual Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- RESET & GLOBAL VARIABLES --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        :root {
+            --bg-color: #0d0d0d;
+            --text-primary: #f5f5f7;
+            --text-secondary: #a1a1a6;
+            --accent: #ffffff;
+            --border-color: #262626;
+            --font-display: 'Cinzel', serif;
+            --font-sans: 'Plus Jakarta Sans', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        /* --- REUSABLE UTILITIES --- */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 14px 28px;
+            border-radius: 0;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .btn-primary {
+            background-color: var(--accent);
+            color: #000;
+            border: 1px solid var(--accent);
+        }
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--text-primary);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            margin-left: 15px;
+        }
+        .btn-secondary:hover {
+            border-color: var(--accent);
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 90px;
+        }
+        .logo {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            letter-spacing: 3px;
+            font-weight: 500;
+        }
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        .nav-links a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links .active {
+            color: var(--text-primary);
+        }
+        .nav-cta {
+            border-bottom: 1px solid var(--text-primary);
+            padding-bottom: 4px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        .nav-cta:hover {
+            color: var(--text-secondary);
+            border-color: var(--text-secondary);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 130px;
+            padding-bottom: 80px;
+            position: relative;
+        }
+        .hero-wrapper {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: 3.8rem;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            font-weight: 400;
+            letter-spacing: -1px;
+        }
+        .hero-content p {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 500px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        .hero-image-wrapper {
+            height: 65vh;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+        .hero-image-wrapper:hover img {
+            transform: scale(1.03);
+        }
+
+        /* --- MARQUEE / TICKER --- */
+        .ticker-container {
+            background-color: #141414;
+            border-y: 1px solid var(--border-color);
+            padding: 25px 0;
+            overflow: hidden;
+            display: flex;
+            white-space: nowrap;
+        }
+        .ticker-wrap {
+            display: flex;
+            animation: marquee 20s linear infinite;
+        }
+        .ticker-item {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 0 30px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+        }
+        .ticker-item::after {
+            content: "•";
+            margin-left: 60px;
+            color: var(--border-color);
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0%); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* --- PORTFOLIO SECTION --- */
+        .portfolio-section {
+            padding: 140px 0;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 70px;
+        }
+        .section-title h2 {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        .portfolio-item {
+            display: block;
+        }
+        .portfolio-img-box {
+            height: 550px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            background-color: #1a1a1a;
+        }
+        .portfolio-item:hover .portfolio-img-box img {
+            transform: scale(1.04);
+        }
+        .portfolio-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .portfolio-info h3 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+        .portfolio-info span {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- TESTIMONIALS SECTION --- */
+        .testimonials {
+            background-color: #111111;
+            padding: 120px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 50px;
+        }
+        .testimonial-card {
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            background-color: var(--bg-color);
+        }
+        .stars {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .testimonial-card p {
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+        .user-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            padding: 100px 0 40px;
+            background-color: #080808;
+        }
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        .footer-about h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        .footer-about p {
+            color: var(--text-secondary);
+            max-width: 350px;
+        }
+        .footer-links h4 {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            color: var(--text-primary);
+        }
+        .footer-links ul {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        .footer-links a {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        .footer-links a:hover {
+            color: var(--text-primary);
+            padding-left: 4px;
+        }
+        .footer-bottom {
+            border-top: 1px solid var(--border-color);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* --- RESPONSIVE DESIGN --- */
+        @media (max-width: 992px) {
+            .hero-wrapper {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-image-wrapper {
+                height: 50vh;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Can be expanded with a JS hamburger toggler */
+            }
+            .container {
+                padding: 0 24px;
+            }
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LIGHTORY</div>
+                <ul class="nav-links">
+                    <li><a href="#" class="active">Home</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+                <a href="#contact" class="nav-cta">Get In Touch</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <h1>Captivating Visual Stories.</h1>
+                    <p>Meticulously composed visuals, enhanced by strategic lighting and refined artistic direction for brands and individuals worldwide.</p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-primary">Get In Touch</a>
+                        <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Featured Portrait Work">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="ticker-container">
+        <div class="ticker-wrap">
+            <div class="ticker-item">Lighting</div>
+            <div class="ticker-item">Direction</div>
+            <div class="ticker-item">Editing</div>
+            <div class="ticker-item">Styling</div>
+            <div class="ticker-item">Portrait Photography</div>
+            <div class="ticker-item">Product Design</div>
+            <div class="ticker-item">Lighting</div>
+            <div class="ticker-item">Direction</div>
+            <div class="ticker-item">Editing</div>
+            <div class="ticker-item">Styling</div>
+            <div class="ticker-item">Portrait Photography</div>
+            <div class="ticker-item">Product Design</div>
+        </div>
+    </div>
+
+    <section id="portfolio" class="portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-title">
+                    <h2>Selected Projects</h2>
+                    <p>A curated collection of recent studio & location works.</p>
+                </div>
+            </div>
+            
+            <div class="portfolio-grid">
+                <a href="#" class="portfolio-item">
+                    <div class="portfolio-img-box">
+                        <img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=1000" alt="Editorial Story">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Monochrome Shadows</h3>
+                        <span>Editorial / 2025</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="portfolio-item">
+                    <div class="portfolio-img-box">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000" alt="Studio Portrait">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Studio Portraiture</h3>
+                        <span>Commercial / 2025</span>
+                    </div>
+                </a>
+
+                <a href="#" class="portfolio-item">
+                    <div class="portfolio-img-box">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000" alt="Cinematic Shoot">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Refined Lighting</h3>
+                        <span>Artistic / 2026</span>
+                    </div>
+                </a>
+
+                <a href="#" class="portfolio-item">
+                    <div class="portfolio-img-box">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000" alt="Vogue Aesthetic">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Visual Flow</h3>
+                        <span>Branding / 2026</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title" style="text-align: center; margin-bottom: 20px;">
+                <h2>Hear from Our Clients</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"An absolute masterclass in visual composition. The creative lighting layout completely redefined our brand's portrait collection."</p>
+                    <div class="user-info">
+                        <h4>Sarah Davis</h4>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"The entire process was smooth and optimized from start to finish. Exceptional direction and high aesthetic value."</p>
+                    <div class="user-info">
+                        <h4>Michael Brown</h4>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p>"Meticulous attention to detail. Timeless, immersive imagery that spoke directly to our core target demographic."</p>
+                    <div class="user-info">
+                        <h4>Emily Johnson</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-about">
+                    <h3>LIGHTORY</h3>
+                    <p>Lightory is a refined and modern framework crafted for photographers, visual storytellers, and creative studios worldwide.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Pages</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:hello@mail.com">hello@mail.com</a></li>
+                        <li><a href="#">XYZ Square, Studio 4B</a></li>
+                        <li><a href="#">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; All Rights Reserved. Lightory Replication.</p>
+                <p>Designed with Focus on Layout & Visuals</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
