@@ -1,567 +1,937 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lightory — Photography & Visual Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <style>
-        .grid-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
-    background-image: 
-        linear-gradient(to right, rgba(10, 10, 10, 10.04) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(10, 10, 10, 10.04) 1px, transparent 1px);
-    background-size: 80px 80px;
-    background-position: center center;
-    mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
-    -webkit-mask-image: radial-gradient(ellipse at center, white 60%, transparent 100%);
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luminae — Creative Photography</title>
+  <style>
+/* ============================================
+   LUMINAE — Photography Portfolio
+   Aesthetic: Refined minimal, editorial warm
+   Fonts: DM Serif Display + DM Sans
+============================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #f2f2f6;
+  --bg-card:  #ffffff;
+  --ink:      #0e0e0e;
+  --ink-mid:  #5a5a5a;
+  --ink-soft: #9a9a9a;
+  --accent:   #0e0e0e;
+  --border:   rgba(0,0,0,0.08);
+  --pill-bg:  rgba(255,255,255,0.85);
+  --shadow:   0 2px 24px rgba(0,0,0,0.07);
+  --shadow-lg:0 8px 48px rgba(0,0,0,0.11);
+  --radius:   18px;
+  --radius-sm:10px;
+  --transition: 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
-        /* --- RESET & GLOBAL VARIABLES --- */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        :root {
-            --bg-color: #FAF9F6;
-            --text-primary: #f5f5f7;
-            --text-secondary: #a1a1a6;
-            --accent: #ffffff;
-            --border-color: #262626;
-            --font-display: 'Cinzel', serif;
-            --font-sans: 'Plus Jakarta Sans', sans-serif;
-            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            font-family: var(--font-sans);
-            overflow-x: hidden;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
 
-        /* --- REUSABLE UTILITIES --- */
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            padding: 14px 28px;
-            border-radius: 0;
-            font-weight: 500;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .btn-primary {
-            background-color: var(--accent);
-            color: #000;
-            border: 1px solid var(--accent);
-        }
-        .btn-primary:hover {
-            background-color: transparent;
-            color: var(--text-primary);
-        }
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            margin-left: 15px;
-        }
-        .btn-secondary:hover {
-            border-color: var(--accent);
-        }
+html { scroll-behavior: smooth; }
 
-        /* --- NAVIGATION --- */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            background-color: rgba(13, 13, 13, 0.85);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border-color);
-        }
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 90px;
-        }
-        .logo {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            letter-spacing: 3px;
-            font-weight: 500;
-        }
-        .nav-links {
-            display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-        .nav-links a {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.5px;
-        }
-        .nav-links a:hover, .nav-links .active {
-            color: var(--text-primary);
-        }
-        .nav-cta {
-            border-bottom: 1px solid var(--text-primary);
-            padding-bottom: 4px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-        .nav-cta:hover {
-            color: var(--text-secondary);
-            border-color: var(--text-secondary);
-        }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
 
-        /* --- HERO SECTION --- */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 130px;
-            padding-bottom: 80px;
-            position: relative;
-        }
-        .hero-wrapper {
-            display: grid;
-            grid-template-columns: 1.2fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .hero-content h1 {
-            font-family: var(--font-display);
-            font-size: 3.8rem;
-            line-height: 1.2;
-            margin-bottom: 25px;
-            font-weight: 400;
-            letter-spacing: -1px;
-        }
-        .hero-content p {
-            color: var(--text-secondary);
-            font-size: 1.15rem;
-            max-width: 500px;
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-        .hero-image-wrapper {
-            height: 65vh;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-        }
-        .hero-image-wrapper:hover img {
-            transform: scale(1.03);
-        }
+/* ---- TYPOGRAPHY ---- */
+h1, h2, h3 { font-family: 'DM Serif Display', serif; font-weight: 400; line-height: 1.1; }
+em { font-style: italic; }
 
-        /* --- MARQUEE / TICKER --- */
-        .ticker-container {
-            background-color: #141414;
-            border-y: 1px solid var(--border-color);
-            padding: 25px 0;
-            overflow: hidden;
-            display: flex;
-            white-space: nowrap;
-        }
-        .ticker-wrap {
-            display: flex;
-            animation: marquee 20s linear infinite;
-        }
-        .ticker-item {
-            font-family: var(--font-display);
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            padding: 0 30px;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-        }
-        .ticker-item::after {
-            content: "•";
-            margin-left: 60px;
-            color: var(--border-color);
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
+/* ---- BUTTONS ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  transition: var(--transition);
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+}
+.btn--dark {
+  background: var(--ink);
+  color: #fff;
+}
+.btn--dark:hover {
+  background: #333;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+}
+.btn--outline {
+  background: var(--pill-bg);
+  color: var(--ink);
+  border: 1.5px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+.btn--outline:hover {
+  background: #fff;
+  border-color: rgba(0,0,0,0.18);
+  transform: translateY(-1px);
+}
+.btn--full { width: 100%; justify-content: center; font-size: 1rem; padding: 18px 28px; }
 
-        /* --- PORTFOLIO SECTION --- */
-        .portfolio-section {
-            padding: 140px 0;
-        }
-        .section-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            margin-bottom: 70px;
-        }
-        .section-title h2 {
-            font-family: var(--font-display);
-            font-size: 2.5rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-        .section-title p {
-            color: var(--text-secondary);
-            font-size: 1rem;
-        }
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        .portfolio-item {
-            display: block;
-        }
-        .portfolio-img-box {
-            height: 550px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            background-color: #1a1a1a;
-        }
-        .portfolio-item:hover .portfolio-img-box img {
-            transform: scale(1.04);
-        }
-        .portfolio-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-        .portfolio-info h3 {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            font-weight: 400;
-        }
-        .portfolio-info span {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+/* ---- NAV ---- */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  padding: 20px 48px;
+  transition: var(--transition);
+}
+.nav--scrolled {
+  background: rgba(242,242,246,0.88);
+  backdrop-filter: blur(16px);
+  padding: 14px 48px;
+  box-shadow: 0 1px 0 var(--border);
+}
+.nav__logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  flex: 1;
+}
+.nav__logo em { font-style: italic; }
+.nav__links {
+  display: flex;
+  list-style: none;
+  gap: 36px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.nav__link {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav__link:hover, .nav__link.active { color: var(--ink); font-weight: 500; }
+.nav__hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.nav__hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); transition: var(--transition); }
 
-        /* --- TESTIMONIALS SECTION --- */
-        .testimonials {
-            background-color: #111111;
-            padding: 120px 0;
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-top: 50px;
-        }
-        .testimonial-card {
-            border: 1px solid var(--border-color);
-            padding: 40px;
-            background-color: var(--bg-color);
-        }
-        .stars {
-            color: #d4af37;
-            margin-bottom: 20px;
-            font-size: 0.9rem;
-        }
-        .testimonial-card p {
-            color: var(--text-secondary);
-            font-style: italic;
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-        .user-info h4 {
-            font-size: 1rem;
-            font-weight: 600;
-        }
+/* ---- HERO ---- */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 48px 80px;
+  overflow: hidden;
+  text-align: center;
+}
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 100px 0 40px;
-            background-color: #080808;
-        }
-        .footer-top {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 80px;
-        }
-        .footer-about h3 {
-            font-family: var(--font-display);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-        .footer-about p {
-            color: var(--text-secondary);
-            max-width: 350px;
-        }
-        .footer-links h4 {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 25px;
-            color: var(--text-primary);
-        }
-        .footer-links ul {
-            list-style: none;
-        }
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-        .footer-links a:hover {
-            color: var(--text-primary);
-            padding-left: 4px;
-        }
-        .footer-bottom {
-            border-top: 1px solid var(--border-color);
-            padding-top: 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
+/* Subtle grid overlay */
+.hero__grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, rgba(0,0,0,0.5) 0%, transparent 80%);
+  pointer-events: none;
+}
 
-        /* --- RESPONSIVE DESIGN --- */
-        @media (max-width: 992px) {
-            .hero-wrapper {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .hero-image-wrapper {
-                height: 50vh;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-top {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            .hero-content h1 {
-                font-size: 2.8rem;
-            }
-        }
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Can be expanded with a JS hamburger toggler */
-            }
-            .container {
-                padding: 0 24px;
-            }
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 20px;
-            }
-        }
-    </style>
+.hero__content {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  animation: fadeUp 0.9s ease both;
+}
+
+.hero__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--pill-bg);
+  border: 1.5px solid var(--border);
+  border-radius: 100px;
+  padding: 8px 18px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-mid);
+  backdrop-filter: blur(8px);
+  margin-bottom: 28px;
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+
+.hero__title {
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  margin-bottom: 20px;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+
+.hero__sub {
+  font-size: 1.05rem;
+  color: var(--ink-mid);
+  font-weight: 300;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+  animation: fadeUp 0.9s 0.3s ease both;
+}
+
+.hero__ctas {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  animation: fadeUp 0.9s 0.4s ease both;
+}
+
+/* Floating portraits */
+.hero__portraits {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portrait {
+  position: absolute;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid rgba(255,255,255,0.9);
+  box-shadow: var(--shadow-lg);
+}
+
+.portrait__img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Placeholder gradients — replace background-image with real photos */
+.portrait__img--1  { background: linear-gradient(160deg, #d4c5b2 0%, #9a8570 100%); }
+.portrait__img--2  { background: linear-gradient(160deg, #b8c8d4 0%, #6a8090 100%); }
+.portrait__img--3  { background: linear-gradient(160deg, #d4b8c8 0%, #906070 100%); }
+.portrait__img--center { background: linear-gradient(160deg, #1a1a1a 0%, #3a3a3a 100%); }
+
+.portrait--1  { width: 100px; height: 100px; bottom: 18%; left: 12%; animation: floatA 6s ease-in-out infinite; }
+.portrait--2  { width: 76px;  height: 76px;  bottom: 30%; left: 34%; animation: floatB 7s ease-in-out infinite; }
+.portrait--3  { width: 110px; height: 110px; bottom: 18%; right: 10%; animation: floatC 5.5s ease-in-out infinite; }
+.portrait--center { width: 180px; height: 180px; bottom: -20px; left: 50%; transform: translateX(-50%); animation: floatA 8s ease-in-out infinite; }
+
+/* Stats row */
+.hero__stats {
+  display: flex;
+  gap: 12px;
+  margin-top: 64px;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s 0.6s ease both;
+}
+.stat-pill {
+  background: var(--pill-bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 24px;
+  backdrop-filter: blur(12px);
+  text-align: left;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.3s ease;
+}
+.stat-pill.revealed { opacity: 1; transform: translateY(0); }
+.stat-pill:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.stat-pill__num  { display: block; font-family: 'DM Serif Display', serif; font-size: 1.9rem; line-height: 1; }
+.stat-pill__label { display: block; font-size: 0.78rem; color: var(--ink-soft); margin-top: 4px; }
+
+/* ---- TRUST BAND ---- */
+.trust {
+  padding: 48px 48px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-card);
+  text-align: center;
+}
+.trust__label {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.trust__logos {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+.trust__logos span {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  color: var(--ink-soft);
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+  transition: opacity 0.3s;
+  cursor: default;
+}
+.trust__logos span:hover { opacity: 1; }
+
+/* ---- SECTION HEADER ---- */
+.section-header { text-align: center; margin-bottom: 56px; }
+.section-header__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 16px;
+  background: rgba(0,0,0,0.04);
+  padding: 7px 16px;
+  border-radius: 100px;
+  border: 1px solid var(--border);
+}
+.section-header__title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+}
+.section-header__sub { color: var(--ink-mid); font-size: 1rem; font-weight: 300; }
+
+/* ---- PORTFOLIO ---- */
+.portfolio {
+  padding: 100px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.portfolio__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 280px 280px;
+  gap: 16px;
+}
+.portfolio__item {
+  text-decoration: none;
+  color: var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.portfolio__item.revealed { opacity: 1; transform: translateY(0); }
+.portfolio__item--tall { grid-row: span 2; }
+.portfolio__item--wide { grid-column: span 2; }
+
+.portfolio__img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 200px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--transition);
+}
+.portfolio__item--tall .portfolio__img,
+.portfolio__item--wide .portfolio__img {
+  height: calc(100% - 54px);
+}
+.portfolio__item:not(.portfolio__item--tall):not(.portfolio__item--wide) .portfolio__img {
+  height: calc(100% - 54px);
+}
+
+.portfolio__item:hover .portfolio__img { transform: scale(1.03); }
+
+.portfolio__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.35) 100%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 16px 18px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.portfolio__item:hover .portfolio__overlay { opacity: 1; }
+.portfolio__tag {
+  background: rgba(255,255,255,0.9);
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+.portfolio__year { color: rgba(255,255,255,0.85); font-size: 0.8rem; font-weight: 300; }
+
+.portfolio__meta {
+  padding: 12px 4px 0;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+.portfolio__meta h3 { font-size: 1rem; font-weight: 500; }
+.portfolio__meta span { font-size: 0.82rem; color: var(--ink-soft); }
+
+.portfolio__cta { text-align: center; margin-top: 48px; }
+
+/* ---- SERVICES ---- */
+.services {
+  padding: 100px 48px;
+  background: var(--bg-card);
+}
+.services__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.service-card {
+  background: var(--bg);
+  border-radius: var(--radius);
+  padding: 40px;
+  border: 1.5px solid var(--border);
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(24px);
+}
+.service-card.revealed { opacity: 1; transform: translateY(0); }
+.service-card:hover {
+  background: var(--bg-card);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+.service-card__num {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2.5rem;
+  color: var(--border);
+  margin-bottom: 16px;
+  line-height: 1;
+}
+.service-card h3 { font-size: 1.3rem; margin-bottom: 12px; letter-spacing: -0.02em; }
+.service-card p  { color: var(--ink-mid); font-weight: 300; line-height: 1.65; font-size: 0.95rem; }
+
+/* ---- TESTIMONIALS ---- */
+.testimonials {
+  padding: 100px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.testimonial-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px;
+  transition: var(--transition);
+  opacity: 0;
+  transform: translateY(24px);
+}
+.testimonial-card.revealed { opacity: 1; transform: translateY(0); }
+.testimonial-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+.testimonial-card__stars { color: var(--ink); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 18px; }
+.testimonial-card p { font-size: 0.95rem; color: var(--ink-mid); font-weight: 300; line-height: 1.7; font-style: italic; margin-bottom: 24px; }
+.testimonial-card__author { display: flex; gap: 12px; align-items: center; }
+.testimonial-card__avatar { width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0; }
+.testimonial-card__author strong { display: block; font-size: 0.9rem; font-weight: 500; }
+.testimonial-card__author span   { display: block; font-size: 0.78rem; color: var(--ink-soft); }
+
+/* ---- CONTACT ---- */
+.contact {
+  padding: 100px 48px;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+}
+.contact__inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+  margin: 16px 0 14px;
+}
+.contact__sub {
+  color: var(--ink-mid);
+  font-weight: 300;
+  margin-bottom: 48px;
+  line-height: 1.65;
+}
+.contact__form { text-align: left; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-mid);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  appearance: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: rgba(0,0,0,0.3);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+.form-group textarea { resize: vertical; min-height: 130px; }
+
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--ink);
+  color: rgba(255,255,255,0.7);
+  padding: 64px 48px 32px;
+}
+.footer__top { display: grid; grid-template-columns: 1fr auto; gap: 64px; margin-bottom: 56px; }
+.footer__logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+.footer__brand p { font-size: 0.88rem; font-weight: 300; max-width: 240px; line-height: 1.6; }
+.footer__links { display: flex; gap: 48px; }
+.footer__col { display: flex; flex-direction: column; gap: 12px; }
+.footer__col h4 { color: #fff; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.footer__col a  { font-size: 0.88rem; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+.footer__col a:hover { color: #fff; }
+.footer__bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ---- ANIMATIONS ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes floatA {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-14px); }
+}
+@keyframes floatB {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes floatC {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 900px) {
+  .nav { padding: 16px 24px; }
+  .nav--scrolled { padding: 12px 24px; }
+  .nav__links { display: none; position: fixed; top: 60px; left: 0; right: 0; background: rgba(242,242,246,0.97); backdrop-filter: blur(16px); flex-direction: column; gap: 0; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .nav__links li a { display: block; padding: 14px 28px; font-size: 1rem; }
+  .nav__links--open { display: flex; }
+  .nav__hamburger { display: flex; }
+  .nav .btn--dark { display: none; }
+
+  .hero { padding: 100px 24px 60px; }
+  .hero__stats { flex-direction: column; gap: 10px; }
+  .stat-pill { text-align: center; }
+
+  .portfolio { padding: 80px 24px; }
+  .portfolio__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+  .portfolio__item--tall { grid-row: span 1; }
+  .portfolio__item--wide { grid-column: span 2; }
+
+  .services { padding: 80px 24px; }
+  .services__grid { grid-template-columns: 1fr; }
+
+  .testimonials { padding: 80px 24px; }
+  .testimonials__grid { grid-template-columns: 1fr; }
+
+  .contact { padding: 80px 24px; }
+  .form-row { grid-template-columns: 1fr; }
+
+  .footer { padding: 48px 24px 24px; }
+  .footer__top { grid-template-columns: 1fr; gap: 40px; }
+  .footer__bottom { flex-direction: column; gap: 8px; }
+}
+
+@media (max-width: 600px) {
+  .portfolio__grid { grid-template-columns: 1fr; }
+  .portfolio__item--wide { grid-column: span 1; }
+  .hero__title { font-size: 2.4rem; }
+  .portrait--1, .portrait--2, .portrait--3 { display: none; }
+  .portrait--center { width: 130px; height: 130px; }
+}
+
+</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 </head>
 <body>
-<div class="grid-background"></div>
-    <header>
-        <div class="container">
-            <nav>
-                <div class="logo">LIGHTORY</div>
-                <ul class="nav-links">
-                    <li><a href="#" class="active">Home</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                </ul>
-                <a href="#contact" class="nav-cta">Get In Touch</a>
-            </nav>
-        </div>
-    </header>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-wrapper">
-                <div class="hero-content">
-                    <h1>Captivating Visual Stories.</h1>
-                    <p>Meticulously composed visuals, enhanced by strategic lighting and refined artistic direction for brands and individuals worldwide.</p>
-                    <div class="hero-actions">
-                        <a href="#" class="btn btn-primary">Get In Touch</a>
-                        <a href="#portfolio" class="btn btn-secondary">View Portfolio</a>
-                    </div>
-                </div>
-                <div class="hero-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1000" alt="Featured Portrait Work">
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__logo">Luminae</div>
+    <ul class="nav__links">
+      <li><a href="#" class="nav__link active">Home</a></li>
+      <li><a href="#portfolio" class="nav__link">Portfolio</a></li>
+      <li><a href="#blog" class="nav__link">Blog</a></li>
+      <li><a href="#about" class="nav__link">About</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--dark">Get In Touch</a>
+    <button class="nav__hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <div class="ticker-container">
-        <div class="ticker-wrap">
-            <div class="ticker-item">Lighting</div>
-            <div class="ticker-item">Direction</div>
-            <div class="ticker-item">Editing</div>
-            <div class="ticker-item">Styling</div>
-            <div class="ticker-item">Portrait Photography</div>
-            <div class="ticker-item">Product Design</div>
-            <div class="ticker-item">Lighting</div>
-            <div class="ticker-item">Direction</div>
-            <div class="ticker-item">Editing</div>
-            <div class="ticker-item">Styling</div>
-            <div class="ticker-item">Portrait Photography</div>
-            <div class="ticker-item">Product Design</div>
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__grid-overlay"></div>
+
+    <div class="hero__content">
+      <div class="hero__badge">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+        Creative Photography
+      </div>
+      <h1 class="hero__title">Captivating<br /><em>Visual Stories</em></h1>
+      <p class="hero__sub">Meticulously composed visuals, enhanced by strategic lighting and refined artistic guidance.</p>
+      <div class="hero__ctas">
+        <a href="#contact" class="btn btn--dark">Get In Touch</a>
+        <a href="#portfolio" class="btn btn--outline">View Portfolio</a>
+      </div>
     </div>
 
-    <section id="portfolio" class="portfolio-section">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-title">
-                    <h2>Selected Projects</h2>
-                    <p>A curated collection of recent studio & location works.</p>
-                </div>
-            </div>
-            
-            <div class="portfolio-grid">
-                <a href="#" class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=1000" alt="Editorial Story">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Monochrome Shadows</h3>
-                        <span>Editorial / 2025</span>
-                    </div>
-                </a>
-                
-                <a href="#" class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000" alt="Studio Portrait">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Studio Portraiture</h3>
-                        <span>Commercial / 2025</span>
-                    </div>
-                </a>
+    <!-- Floating portrait bubbles -->
+    <div class="hero__portraits">
+      <div class="portrait portrait--1">
+        <div class="portrait__img portrait__img--1"></div>
+      </div>
+      <div class="portrait portrait--2">
+        <div class="portrait__img portrait__img--2"></div>
+      </div>
+      <div class="portrait portrait--3">
+        <div class="portrait__img portrait__img--3"></div>
+      </div>
+      <div class="portrait portrait--center">
+        <div class="portrait__img portrait__img--center"></div>
+      </div>
+    </div>
 
-                <a href="#" class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=1000" alt="Cinematic Shoot">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Refined Lighting</h3>
-                        <span>Artistic / 2026</span>
-                    </div>
-                </a>
+    <!-- Stat pills -->
+    <div class="hero__stats">
+      <div class="stat-pill">
+        <span class="stat-pill__num">8+</span>
+        <span class="stat-pill__label">Years of experience</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__num">100+</span>
+        <span class="stat-pill__label">Projects completed</span>
+      </div>
+      <div class="stat-pill">
+        <span class="stat-pill__num">40+</span>
+        <span class="stat-pill__label">Happy clients</span>
+      </div>
+    </div>
+  </section>
 
-                <a href="#" class="portfolio-item">
-                    <div class="portfolio-img-box">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000" alt="Vogue Aesthetic">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Visual Flow</h3>
-                        <span>Branding / 2026</span>
-                    </div>
-                </a>
-            </div>
+  <!-- TRUST BAND -->
+  <section class="trust">
+    <p class="trust__label">Trusted Globally by Brands and Creatives</p>
+    <div class="trust__logos">
+      <span>VELOS</span><span>HANDUX</span><span>HALOZA</span><span>NASYO</span><span>PETYU</span><span>ORION</span>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="portfolio">
+    <div class="section-header">
+      <div class="section-header__eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        My Work
+      </div>
+      <h2 class="section-header__title">A lens into<br /><em>my world</em></h2>
+      <p class="section-header__sub">I capture your vision through creative photography.</p>
+    </div>
+
+    <div class="portfolio__grid">
+      <a href="#" class="portfolio__item portfolio__item--tall">
+        <div class="portfolio__img" style="background: linear-gradient(135deg, #c8b8a2 0%, #8a7360 100%);">
+          <div class="portfolio__overlay">
+            <span class="portfolio__tag">Nature</span>
+            <span class="portfolio__year">2026</span>
+          </div>
         </div>
-    </section>
-
-    <section class="testimonials">
-        <div class="container">
-            <div class="section-title" style="text-align: center; margin-bottom: 20px;">
-                <h2>Hear from Our Clients</h2>
-            </div>
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"An absolute masterclass in visual composition. The creative lighting layout completely redefined our brand's portrait collection."</p>
-                    <div class="user-info">
-                        <h4>Sarah Davis</h4>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"The entire process was smooth and optimized from start to finish. Exceptional direction and high aesthetic value."</p>
-                    <div class="user-info">
-                        <h4>Michael Brown</h4>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p>"Meticulous attention to detail. Timeless, immersive imagery that spoke directly to our core target demographic."</p>
-                    <div class="user-info">
-                        <h4>Emily Johnson</h4>
-                    </div>
-                </div>
-            </div>
+        <div class="portfolio__meta">
+          <h3>Into the Wild</h3>
+          <span>Nature Series →</span>
         </div>
-    </section>
-
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-about">
-                    <h3>LIGHTORY</h3>
-                    <p>Lightory is a refined and modern framework crafted for photographers, visual storytellers, and creative studios worldwide.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Pages</h4>
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Portfolio</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Contact</h4>
-                    <ul>
-                        <li><a href="mailto:hello@mail.com">hello@mail.com</a></li>
-                        <li><a href="#">XYZ Square, Studio 4B</a></li>
-                        <li><a href="#">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; All Rights Reserved. Lightory Replication.</p>
-                <p>Designed with Focus on Layout & Visuals</p>
-            </div>
+      </a>
+      <a href="#" class="portfolio__item">
+        <div class="portfolio__img" style="background: linear-gradient(135deg, #a2b4c8 0%, #607080 100%);">
+          <div class="portfolio__overlay">
+            <span class="portfolio__tag">Travel</span>
+            <span class="portfolio__year">2025</span>
+          </div>
         </div>
-    </footer>
+        <div class="portfolio__meta">
+          <h3>Distant Horizons</h3>
+          <span>Travel Series →</span>
+        </div>
+      </a>
+      <a href="#" class="portfolio__item">
+        <div class="portfolio__img" style="background: linear-gradient(135deg, #c2a8c8 0%, #705a78 100%);">
+          <div class="portfolio__overlay">
+            <span class="portfolio__tag">Urban</span>
+            <span class="portfolio__year">2024</span>
+          </div>
+        </div>
+        <div class="portfolio__meta">
+          <h3>City Pulse</h3>
+          <span>Urban Series →</span>
+        </div>
+      </a>
+      <a href="#" class="portfolio__item portfolio__item--wide">
+        <div class="portfolio__img" style="background: linear-gradient(135deg, #c8c2a2 0%, #706050 100%);">
+          <div class="portfolio__overlay">
+            <span class="portfolio__tag">Emotion</span>
+            <span class="portfolio__year">2024</span>
+          </div>
+        </div>
+        <div class="portfolio__meta">
+          <h3>Raw Emotion</h3>
+          <span>Portrait Series →</span>
+        </div>
+      </a>
+      <a href="#" class="portfolio__item">
+        <div class="portfolio__img" style="background: linear-gradient(135deg, #a8c8b8 0%, #507060 100%);">
+          <div class="portfolio__overlay">
+            <span class="portfolio__tag">Fashion</span>
+            <span class="portfolio__year">2023</span>
+          </div>
+        </div>
+        <div class="portfolio__meta">
+          <h3>Thread & Light</h3>
+          <span>Fashion Series →</span>
+        </div>
+      </a>
+    </div>
 
+    <div class="portfolio__cta">
+      <a href="#" class="btn btn--outline">View Full Portfolio</a>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services" id="about">
+    <div class="section-header">
+      <div class="section-header__eyebrow">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Services
+      </div>
+      <h2 class="section-header__title">What I offer</h2>
+    </div>
+    <div class="services__grid">
+      <div class="service-card">
+        <div class="service-card__num">01</div>
+        <h3>Portrait Sessions</h3>
+        <p>Intimate, thoughtful portraits that reveal character — from personal headshots to editorial campaigns.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__num">02</div>
+        <h3>Commercial Photography</h3>
+        <p>Brand-aligned imagery crafted to elevate products, spaces, and editorial stories.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__num">03</div>
+        <h3>Event Coverage</h3>
+        <p>Candid, documentary-style coverage that captures the energy and emotion of every moment.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-card__num">04</div>
+        <h3>Creative Direction</h3>
+        <p>Full creative concept development — from mood boards to final retouching — for cohesive visual identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="section-header">
+      <div class="section-header__eyebrow">Kind words</div>
+      <h2 class="section-header__title">What clients say</h2>
+    </div>
+    <div class="testimonials__grid">
+      <div class="testimonial-card">
+        <div class="testimonial-card__stars">★★★★★</div>
+        <p>"Absolutely transformed how we present our brand. Every shot is intentional and stunning."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" style="background:#c2a8c8;"></div>
+          <div>
+            <strong>Nadia K.</strong>
+            <span>Creative Director, Haloza</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card__stars">★★★★★</div>
+        <p>"The attention to light and composition is unmatched. Our campaign imagery exceeded all expectations."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" style="background:#a2b4c8;"></div>
+          <div>
+            <strong>Marcus T.</strong>
+            <span>CEO, Velos Studio</span>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-card__stars">★★★★★</div>
+        <p>"Working with Luminae felt like genuine collaboration. They understood our vision immediately."</p>
+        <div class="testimonial-card__author">
+          <div class="testimonial-card__avatar" style="background:#c8b8a2;"></div>
+          <div>
+            <strong>Amara S.</strong>
+            <span>Brand Manager, Petyu</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <div class="section-header__eyebrow" style="justify-content:center;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Let's Connect
+      </div>
+      <h2 class="contact__title">Ready to create<br /><em>something beautiful?</em></h2>
+      <p class="contact__sub">Whether you have a project in mind or just want to chat, I'd love to hear from you.</p>
+      <div class="contact__form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" placeholder="Alex Johnson" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="alex@studio.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Project Type</label>
+          <select>
+            <option>Portrait Session</option>
+            <option>Commercial Photography</option>
+            <option>Event Coverage</option>
+            <option>Creative Direction</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell me about your project</label>
+          <textarea placeholder="Describe your vision..."></textarea>
+        </div>
+        <button class="btn btn--dark btn--full">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo">Luminae</div>
+        <p>Capturing moments that matter, one frame at a time.</p>
+      </div>
+      <div class="footer__links">
+        <div class="footer__col">
+          <h4>Navigate</h4>
+          <a href="#">Home</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h4>Connect</h4>
+          <a href="#">Instagram</a>
+          <a href="#">Behance</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">500px</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© 2026 Luminae. All rights reserved.</span>
+      <span>Made with care & light</span>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const nav = document.querySelector('.nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('nav--scrolled', window.scrollY > 40);
+    });
+
+    // Hamburger menu
+    const hamburger = document.querySelector('.nav__hamburger');
+    const navLinks = document.querySelector('.nav__links');
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('nav__links--open');
+      hamburger.classList.toggle('nav__hamburger--open');
+    });
+
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.portfolio__item, .service-card, .testimonial-card, .stat-pill');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
