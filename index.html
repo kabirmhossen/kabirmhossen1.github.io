@@ -142,11 +142,13 @@ em { font-style: italic; }
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(var(--border) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 70% 80% at 50% 40%, rgba(0,0,0,0.5) 0%, transparent 80%);
+    linear-gradient(rgba(0,0,0,0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.09) 1px, transparent 1px);
+  background-size: 72px 72px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 42%, black 0%, black 25%, rgba(0,0,0,0.4) 50%, transparent 72%);
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 42%, black 0%, black 25%, rgba(0,0,0,0.4) 50%, transparent 72%);
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero__content {
