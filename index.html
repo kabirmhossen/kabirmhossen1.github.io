@@ -132,22 +132,29 @@ a  { color: inherit; }
   animation: fadeUp 0.8s 0.1s ease both;
 }
 
-/* row: name left | sketch right */
+/* Kabir | sketch | Hossen — three-column title row */
 .hero__title-row {
-  display: flex; align-items: center; gap: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
   margin-bottom: 20px;
   animation: fadeUp 0.9s 0.2s ease both;
 }
 
-.hero__title {
-  font-size: clamp(2.8rem, 6vw, 5.2rem);
+.hero__title-first,
+.hero__title-last {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3rem, 7vw, 5.8rem);
   letter-spacing: -0.03em; line-height: 1.0;
-  text-align: left; margin: 0;
+  font-weight: 400; margin: 0;
 }
+.hero__title-first { text-align: right; padding-right: 20px; }
+.hero__title-last  { text-align: left;  padding-left: 20px; font-style: italic; }
 
-/* Inline sketch next to the name */
+/* Sketch sandwiched in the middle */
 .hero__sketch-inline {
-  width: clamp(140px, 16vw, 220px);
+  width: clamp(150px, 17vw, 240px);
   flex-shrink: 0;
   filter: drop-shadow(0 8px 28px rgba(0,0,0,0.11));
   animation: floatB 7s ease-in-out infinite;
@@ -460,7 +467,8 @@ a  { color: inherit; }
 
   .hero { padding: 100px 24px 60px; }
   .bubble--a, .bubble--b, .bubble--c, .bubble--d { display: none; }
-  .hero__sketch-inline { width: 130px; }
+  .hero__sketch-inline { width: 120px; }
+  .hero__title-first, .hero__title-last { font-size: clamp(2.2rem, 6vw, 3.2rem); }
 
   .about { padding: 80px 24px; }
   .about__grid { grid-template-columns: 1fr; }
@@ -483,9 +491,10 @@ a  { color: inherit; }
 @media (max-width: 600px) {
   .hero__title { font-size: 2.5rem; }
   .hero__stats { flex-direction: column; gap: 10px; }
-  .hero__title-row { flex-direction: column; gap: 16px; align-items: center; }
-  .hero__title { text-align: center; }
-  .hero__sketch-inline { width: 120px; }
+  .hero__title-row { flex-wrap: wrap; justify-content: center; gap: 0; }
+  .hero__title-first { padding-right: 12px; }
+  .hero__title-last  { padding-left: 12px; }
+  .hero__sketch-inline { order: -1; width: 110px; flex-basis: 100%; display: flex; justify-content: center; margin-bottom: 8px; }
   .skills__grid { grid-template-columns: 1fr; }
   .pub-card { grid-template-columns: 28px 1fr; }
   .pub-card__action { grid-column: 2; }
@@ -546,12 +555,13 @@ a  { color: inherit; }
         Research Officer · Computational Biology
       </div>
 
-      <!-- Name + sketch side by side -->
+      <!-- Kabir | sketch | Hossen -->
       <div class="hero__title-row">
-        <h1 class="hero__title">Kabir<br /><em>Hossen</em></h1>
+        <span class="hero__title-first">Kabir</span>
         <div class="hero__sketch-inline">
           <img src="Mysketch-01.png" alt="Kabir Hossen illustration" />
         </div>
+        <span class="hero__title-last">Hossen</span>
       </div>
 
       <p class="hero__role">Single-Cell Genomics & Host-Pathogen Biology</p>
