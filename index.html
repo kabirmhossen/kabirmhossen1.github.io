@@ -226,10 +226,12 @@ a  { color: inherit; }
 .bubble--c { bottom: 38%; left: 8%; opacity: 0; animation: fadeUp 0.6s 1.5s var(--ease) forwards; }
 .bubble--d { bottom: 42%; right: 6%; opacity: 0; animation: fadeUp 0.6s 1.6s var(--ease) forwards; }
 
-.bubble--a.floating { animation: floatA 7s   ease-in-out infinite; }
-.bubble--b.floating { animation: floatB 6s   ease-in-out infinite; }
-.bubble--c.floating { animation: floatC 8s   ease-in-out infinite; }
-.bubble--d.floating { animation: floatA 5.5s ease-in-out infinite; }
+/* Float kicks in after JS adds .floating class */
+.bubble--a.floating { animation: floatA 7s   ease-in-out infinite; opacity: 1; }
+.bubble--b.floating { animation: floatB 6s   ease-in-out infinite; opacity: 1; }
+.bubble--c.floating { animation: floatC 8s   ease-in-out infinite; opacity: 1; }
+.bubble--d.floating { animation: floatA 5.5s ease-in-out infinite; opacity: 1; }
+
 /* Stats row */
 .hero__stats {
   display: flex; gap: 12px; margin-top: 56px;
@@ -585,7 +587,7 @@ a  { color: inherit; }
     <div class="hero__bubbles">
       <div class="bubble bubble--a">
         <span class="bubble__label">Affiliation</span>
-        <span class="bubble__value">CHRF · BMB-SUST</span>
+        <span class="bubble__value">BMB-SUST</span>
       </div>
       <div class="bubble bubble--b">
         <span class="bubble__label">Focus</span>
@@ -604,7 +606,7 @@ a  { color: inherit; }
     <div class="hero__content">
       <div class="hero__badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        Research Officer · Computational Biology
+        MSc(Thesis) Student, Biochemistry and Molecular Biology
       </div>
 
       <!-- Sketch LEFT | divider | Name RIGHT -->
@@ -620,7 +622,7 @@ a  { color: inherit; }
       </div>
 
       <p class="hero__role">Single-Cell Genomics & Host-Pathogen Biology</p>
-      <p class="hero__sub">I work at the intersection of transcriptomics, host-pathogen biology, and computational modeling — integrating sequencing data, bioinformatics, and machine learning to study disease mechanisms.</p>
+      <p class="hero__sub">I work at the intersection of multi-Omics, cancer biology, and infectious diseases — integrating machine learning, bioinformatics, and wet-lab experiments to unveil disease mechanisms.</p>
       <div class="hero__ctas">
         <a href="https://kabirmhossen.github.io/cv.pdf" target="_blank" class="btn btn--dark">Download CV</a>
         <a href="#research" class="btn btn--outline">View Research</a>
@@ -1015,6 +1017,7 @@ a  { color: inherit; }
     window.addEventListener('scroll', () => {
       nav.classList.toggle('nav--scrolled', window.scrollY > 40);
     });
+
     // Start bubble float after fade-in completes
     setTimeout(() => {
       document.querySelectorAll('.bubble').forEach(b => b.classList.add('floating'));
