@@ -116,11 +116,10 @@ a  { color: inherit; }
   pointer-events: none; z-index: 0;
 }
 
-/* hero content: badge + text-left + sketch-right all centred together */
+/* hero content wrapper */
 .hero__content {
   position: relative; z-index: 2;
   display: flex; flex-direction: column; align-items: center;
-  animation: fadeUp 0.9s ease both;
 }
 
 .hero__badge {
@@ -128,55 +127,85 @@ a  { color: inherit; }
   background: var(--pill-bg); border: 1.5px solid var(--border);
   border-radius: 100px; padding: 8px 18px;
   font-size: 0.82rem; font-weight: 500; color: var(--ink-mid);
-  backdrop-filter: blur(8px); margin-bottom: 28px;
-  animation: fadeUp 0.8s 0.1s ease both;
+  backdrop-filter: blur(8px); margin-bottom: 32px;
+  opacity: 0; animation: fadeUp 0.7s 0.1s var(--ease) forwards;
 }
 
-/* Kabir | sketch | Hossen — three-column title row */
-.hero__title-row {
+/* ── MAIN STAGE: sketch LEFT | divider | name RIGHT ── */
+.hero__stage {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
   gap: 0;
-  margin-bottom: 20px;
-  animation: fadeUp 0.9s 0.2s ease both;
+  margin-bottom: 28px;
 }
 
+/* Sketch column */
+.hero__sketch-col {
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-right: 36px;
+  opacity: 0;
+  animation: slideInLeft 0.9s 0.3s var(--ease) forwards;
+}
+.hero__sketch-col img {
+  width: clamp(180px, 20vw, 280px);
+  height: auto; display: block;
+  mix-blend-mode: multiply;
+  filter: drop-shadow(0 8px 28px rgba(0,0,0,0.10));
+  animation: floatB 7s ease-in-out infinite;
+}
+
+/* Vertical divider line */
+.hero__divider {
+  width: 1.5px;
+  background: var(--ink);
+  align-self: stretch;
+  min-height: 200px;
+  opacity: 0;
+  animation: growLine 0.6s 0.5s var(--ease) forwards;
+  transform-origin: top center;
+  flex-shrink: 0;
+}
+
+/* Name column — slides in from behind the line */
+.hero__name-col {
+  display: flex; flex-direction: column;
+  align-items: flex-start; justify-content: center;
+  padding-left: 36px;
+  overflow: hidden;
+}
 .hero__title-first,
 .hero__title-last {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(3rem, 7vw, 5.8rem);
-  letter-spacing: -0.03em; line-height: 1.0;
-  font-weight: 350; margin: 0;
+  font-size: clamp(3.2rem, 7.5vw, 6.4rem);
+  letter-spacing: -0.03em; line-height: 0.95;
+  font-weight: 400; margin: 0; display: block;
+  opacity: 0;
 }
-.hero__title-first { text-align: right; padding-right: 8px; }
-.hero__title-last  { text-align: left;  padding-left: 8px; font-style: italic; }
-
-/* Sketch sandwiched in the middle */
-.hero__sketch-inline {
-  width: clamp(150px, 17vw, 240px);
-  flex-shrink: 0;
-  filter: drop-shadow(0 8px 28px rgba(0,0,0,0.11));
-  animation: floatB 7s ease-in-out infinite;
+.hero__title-first {
+  animation: slideFromLine 0.7s 0.65s var(--ease) forwards;
 }
-.hero__sketch-inline img {
-  width: 100%; height: auto; display: block;
-  mix-blend-mode: multiply;
+.hero__title-last {
+  font-style: italic;
+  animation: slideFromLine 0.7s 0.82s var(--ease) forwards;
 }
 
 .hero__role {
   font-family: 'DM Sans', sans-serif; font-weight: 300;
-  font-size: 1.15rem; color: var(--ink-mid); margin-bottom: 16px;
-  animation: fadeUp 0.9s 0.25s ease both;
+  font-size: 1.1rem; color: var(--ink-mid); margin-bottom: 16px;
+  opacity: 0; animation: fadeUp 0.7s 1s var(--ease) forwards;
 }
 
 .hero__sub {
-  font-size: 1rem; color: var(--ink-mid); font-weight: 300;
-  max-width: 560px; margin: 0 auto 36px; line-height: 1.7;
-  animation: fadeUp 0.9s 0.3s ease both;
+  font-size: 0.97rem; color: var(--ink-mid); font-weight: 300;
+  max-width: 520px; margin: 0 auto 36px; line-height: 1.7;
+  opacity: 0; animation: fadeUp 0.7s 1.1s var(--ease) forwards;
 }
 
-.hero__ctas { display: flex; gap: 12px; justify-content: center; animation: fadeUp 0.9s 0.4s ease both; }
+.hero__ctas {
+  display: flex; gap: 12px; justify-content: center;
+  opacity: 0; animation: fadeUp 0.7s 1.2s var(--ease) forwards;
+}
 
 /* Floating info bubbles */
 .hero__bubbles { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
@@ -187,16 +216,15 @@ a  { color: inherit; }
   border-radius: var(--radius); padding: 14px 20px;
   backdrop-filter: blur(12px); box-shadow: var(--shadow);
   font-size: 0.8rem;
+  opacity: 0; animation: fadeUp 0.6s var(--ease) forwards;
 }
 .bubble__label { color: var(--ink-soft); display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
 .bubble__value { color: var(--ink); font-weight: 500; font-size: 0.88rem; }
 
-.bubble--a { top: 22%; left: 6%; animation: floatA 7s ease-in-out infinite; }
-.bubble--b { top: 24%; right: 5%; animation: floatB 6s ease-in-out infinite; }
-.bubble--c { bottom: 36%; left: 8%; animation: floatC 8s ease-in-out infinite; }
-.bubble--d { bottom: 30%; right: 6%; animation: floatA 5.5s ease-in-out infinite; }
-
-/* old absolute sketch removed — now inline in title row */
+.bubble--a { top: 22%; left: 6%;   animation-delay: 1.3s; animation-name: fadeUp, floatA; animation-duration: 0.6s, 7s; animation-timing-function: var(--ease), ease-in-out; animation-fill-mode: forwards, none; animation-iteration-count: 1, infinite; animation-delay: 1.3s, 1.9s; }
+.bubble--b { top: 28%; right: 5%;  animation-delay: 1.4s; animation-name: fadeUp, floatB; animation-duration: 0.6s, 6s; animation-timing-function: var(--ease), ease-in-out; animation-fill-mode: forwards, none; animation-iteration-count: 1, infinite; animation-delay: 1.4s, 2s; }
+.bubble--c { bottom: 38%; left: 8%; animation-delay: 1.5s; animation-name: fadeUp, floatC; animation-duration: 0.6s, 8s; animation-timing-function: var(--ease), ease-in-out; animation-fill-mode: forwards, none; animation-iteration-count: 1, infinite; animation-delay: 1.5s, 2.1s; }
+.bubble--d { bottom: 42%; right: 6%; animation-delay: 1.6s; animation-name: fadeUp, floatA; animation-duration: 0.6s, 5.5s; animation-timing-function: var(--ease), ease-in-out; animation-fill-mode: forwards, none; animation-iteration-count: 1, infinite; animation-delay: 1.6s, 2.2s; }
 
 /* Stats row */
 .hero__stats {
@@ -437,6 +465,21 @@ a  { color: inherit; }
   from { opacity: 0; transform: translateY(28px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+/* Sketch slides in from the left */
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-48px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+/* Vertical line grows downward */
+@keyframes growLine {
+  from { opacity: 0; transform: scaleY(0); }
+  to   { opacity: 1; transform: scaleY(1); }
+}
+/* Name words slide out from behind the line (left→right) */
+@keyframes slideFromLine {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
 @keyframes floatA {
   0%, 100% { transform: translateY(0px); }
   50%       { transform: translateY(-12px); }
@@ -467,8 +510,11 @@ a  { color: inherit; }
 
   .hero { padding: 100px 24px 60px; }
   .bubble--a, .bubble--b, .bubble--c, .bubble--d { display: none; }
-  .hero__sketch-inline { width: 120px; }
-  .hero__title-first, .hero__title-last { font-size: clamp(2.2rem, 6vw, 3.2rem); }
+  .hero__stage { gap: 0; }
+  .hero__sketch-col { padding-right: 20px; }
+  .hero__sketch-col img { width: 140px; }
+  .hero__name-col { padding-left: 20px; }
+  .hero__title-first, .hero__title-last { font-size: clamp(2.4rem, 7vw, 3.6rem); }
 
   .about { padding: 80px 24px; }
   .about__grid { grid-template-columns: 1fr; }
@@ -491,10 +537,12 @@ a  { color: inherit; }
 @media (max-width: 600px) {
   .hero__title { font-size: 2.5rem; }
   .hero__stats { flex-direction: column; gap: 10px; }
-  .hero__title-row { flex-wrap: wrap; justify-content: center; gap: 0; }
-  .hero__title-first { padding-right: 12px; }
-  .hero__title-last  { padding-left: 12px; }
-  .hero__sketch-inline { order: -1; width: 110px; flex-basis: 100%; display: flex; justify-content: center; margin-bottom: 8px; }
+  .hero__stage { flex-direction: column; align-items: center; }
+  .hero__sketch-col { padding-right: 0; padding-bottom: 16px; }
+  .hero__sketch-col img { width: 130px; }
+  .hero__divider { width: 60px; height: 1.5px; min-height: unset; align-self: center; }
+  .hero__name-col { padding-left: 0; align-items: center; padding-top: 16px; }
+  .hero__title-first, .hero__title-last { font-size: 3rem; }
   .skills__grid { grid-template-columns: 1fr; }
   .pub-card { grid-template-columns: 28px 1fr; }
   .pub-card__action { grid-column: 2; }
@@ -533,7 +581,7 @@ a  { color: inherit; }
     <div class="hero__bubbles">
       <div class="bubble bubble--a">
         <span class="bubble__label">Affiliation</span>
-        <span class="bubble__value">BMB-SUST</span>
+        <span class="bubble__value">CHRF · BMB-SUST</span>
       </div>
       <div class="bubble bubble--b">
         <span class="bubble__label">Focus</span>
@@ -541,7 +589,7 @@ a  { color: inherit; }
       </div>
       <div class="bubble bubble--c">
         <span class="bubble__label">Training</span>
-        <span class="bubble__value">BMU; NICRH</span>
+        <span class="bubble__value">BMU · NICRH</span>
       </div>
       <div class="bubble bubble--d">
         <span class="bubble__label">Publications</span>
@@ -551,21 +599,24 @@ a  { color: inherit; }
 
     <div class="hero__content">
       <div class="hero__badge">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        MSc(Thesis) Student · Biochemistry and Molecular Biology
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Research Officer · Computational Biology
       </div>
 
-      <!-- Kabir | sketch | Hossen -->
-      <div class="hero__title-row">
-        <span class="hero__title-first">Kabir</span>
-        <div class="hero__sketch-inline">
+      <!-- Sketch LEFT | divider | Name RIGHT -->
+      <div class="hero__stage">
+        <div class="hero__sketch-col">
           <img src="Mysketch-01.png" alt="Kabir Hossen illustration" />
         </div>
-        <span class="hero__title-last">Hossen</span>
+        <div class="hero__divider"></div>
+        <div class="hero__name-col">
+          <span class="hero__title-first">Kabir</span>
+          <span class="hero__title-last">Hossen</span>
+        </div>
       </div>
 
-      <p class="hero__role">Gene Expression and Regulation</p>
-      <p class="hero__sub">I work at the intersection of multi-omics, cancer biology, and infectious diseases — integrating machine learning, bioinformatics, and wet-lab experiments to unveil disease mechanisms.</p>
+      <p class="hero__role">Single-Cell Genomics & Host-Pathogen Biology</p>
+      <p class="hero__sub">I work at the intersection of transcriptomics, host-pathogen biology, and computational modeling — integrating sequencing data, bioinformatics, and machine learning to study disease mechanisms.</p>
       <div class="hero__ctas">
         <a href="https://kabirmhossen.github.io/cv.pdf" target="_blank" class="btn btn--dark">Download CV</a>
         <a href="#research" class="btn btn--outline">View Research</a>
@@ -574,7 +625,7 @@ a  { color: inherit; }
 
     <div class="hero__stats">
       <div class="stat-pill">
-        <span class="stat-pill__num">5+</span>
+        <span class="stat-pill__num">4+</span>
         <span class="stat-pill__label">Publications</span>
       </div>
       <div class="stat-pill">
