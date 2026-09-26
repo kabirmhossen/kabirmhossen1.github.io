@@ -70,7 +70,18 @@ a  { color: inherit; }
 .nav__logo {
   font-family: 'DM Serif Display', serif; font-size: 1.25rem;
   letter-spacing: -0.02em; flex: 1; text-decoration: none; color: var(--ink);
+  display: flex; align-items: center; gap: 10px;
 }
+.nav__logo-icon {
+  width: 36px; height: 36px;
+  object-fit: cover; object-position: top center;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+  border: 1.5px solid var(--border);
+  flex-shrink: 0;
+  transition: transform 0.4s var(--ease);
+}
+.nav__logo:hover .nav__logo-icon { transform: scale(1.08) rotate(-3deg); }
 .nav__links {
   display: flex; list-style: none; gap: 32px;
   position: absolute; left: 50%; transform: translateX(-50%);
@@ -153,6 +164,21 @@ a  { color: inherit; }
 .bubble--b { top: 28%; right: 5%; animation: floatB 6s ease-in-out infinite; }
 .bubble--c { bottom: 22%; left: 8%; animation: floatC 8s ease-in-out infinite; }
 .bubble--d { bottom: 26%; right: 6%; animation: floatA 5.5s ease-in-out infinite; }
+
+/* Hero sketch portrait */
+.hero__sketch {
+  position: absolute;
+  bottom: 0; right: 5%;
+  width: 300px;
+  z-index: 1;
+  pointer-events: none;
+  animation: floatB 7s ease-in-out infinite;
+  filter: drop-shadow(0 12px 40px rgba(0,0,0,0.12));
+}
+.hero__sketch img {
+  width: 100%; height: auto; display: block;
+  mix-blend-mode: multiply;
+}
 
 /* Stats row */
 .hero__stats {
@@ -423,6 +449,7 @@ a  { color: inherit; }
 
   .hero { padding: 100px 24px 60px; }
   .bubble--a, .bubble--b, .bubble--c, .bubble--d { display: none; }
+  .hero__sketch { width: 200px; right: 1%; opacity: 0.3; }
 
   .about { padding: 80px 24px; }
   .about__grid { grid-template-columns: 1fr; }
@@ -445,6 +472,7 @@ a  { color: inherit; }
 @media (max-width: 600px) {
   .hero__title { font-size: 2.5rem; }
   .hero__stats { flex-direction: column; gap: 10px; }
+  .hero__sketch { display: none; }
   .skills__grid { grid-template-columns: 1fr; }
   .pub-card { grid-template-columns: 28px 1fr; }
   .pub-card__action { grid-column: 2; }
@@ -457,7 +485,10 @@ a  { color: inherit; }
 
   <!-- NAV -->
   <nav class="nav" id="top">
-    <a href="#top" class="nav__logo">Kabir Hossen<em>.</em></a>
+    <a href="#top" class="nav__logo">
+      <img src="Mysketch-01.png" alt="" class="nav__logo-icon" />
+      Kabir Hossen<em>.</em>
+    </a>
     <ul class="nav__links">
       <li><a href="#top"          class="nav__link active">Home</a></li>
       <li><a href="#about"        class="nav__link">About</a></li>
@@ -492,14 +523,19 @@ a  { color: inherit; }
       </div>
       <div class="bubble bubble--d">
         <span class="bubble__label">Publications</span>
-        <span class="bubble__value">4+ Scholarly Works</span>
+        <span class="bubble__value">5+ Scholarly Works</span>
       </div>
+    </div>
+
+    <!-- Sketch portrait -->
+    <div class="hero__sketch">
+      <img src="Mysketch-01.png" alt="Kabir Hossen illustration" />
     </div>
 
     <div class="hero__content">
       <div class="hero__badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        MSc(Thesis) Student · Biochemistry and Molecular Biology
+        MSc(Thesis) Student · Biocheimstry and Molecular Biology
       </div>
       <h1 class="hero__title">Kabir<br /><em>Hossen</em></h1>
       <p class="hero__role">Gene Expression and Regulation</p>
@@ -516,7 +552,7 @@ a  { color: inherit; }
         <span class="stat-pill__label">Publications</span>
       </div>
       <div class="stat-pill">
-        <span class="stat-pill__num">4</span>
+        <span class="stat-pill__num">6</span>
         <span class="stat-pill__label">Research projects</span>
       </div>
       <div class="stat-pill">
@@ -667,7 +703,7 @@ a  { color: inherit; }
           <p class="pub-card__journal">Published @ <strong>Scientific Reports</strong>, Nature Publishing Group UK</p>
         </div>
         <div class="pub-card__action">
-          <a href="https://www.nature.com/articles/s41598-024-80519-7" target="_blank" rel="noopener" class="pub-doi-btn">
+          <a href="https://doi.org/10.1038/s41598-025-86785-5" target="_blank" rel="noopener" class="pub-doi-btn">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             View Paper
           </a>
