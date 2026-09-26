@@ -116,7 +116,12 @@ a  { color: inherit; }
   pointer-events: none; z-index: 0;
 }
 
-.hero__content { position: relative; z-index: 2; max-width: 780px; animation: fadeUp 0.9s ease both; }
+/* hero content: badge + text-left + sketch-right all centred together */
+.hero__content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; align-items: center;
+  animation: fadeUp 0.9s ease both;
+}
 
 .hero__badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -127,10 +132,29 @@ a  { color: inherit; }
   animation: fadeUp 0.8s 0.1s ease both;
 }
 
+/* row: name left | sketch right */
+.hero__title-row {
+  display: flex; align-items: center; gap: 32px;
+  margin-bottom: 20px;
+  animation: fadeUp 0.9s 0.2s ease both;
+}
+
 .hero__title {
   font-size: clamp(2.8rem, 6vw, 5.2rem);
-  letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 20px;
-  animation: fadeUp 0.9s 0.2s ease both;
+  letter-spacing: -0.03em; line-height: 1.0;
+  text-align: left; margin: 0;
+}
+
+/* Inline sketch next to the name */
+.hero__sketch-inline {
+  width: clamp(140px, 16vw, 220px);
+  flex-shrink: 0;
+  filter: drop-shadow(0 8px 28px rgba(0,0,0,0.11));
+  animation: floatB 7s ease-in-out infinite;
+}
+.hero__sketch-inline img {
+  width: 100%; height: auto; display: block;
+  mix-blend-mode: multiply;
 }
 
 .hero__role {
@@ -165,20 +189,7 @@ a  { color: inherit; }
 .bubble--c { bottom: 22%; left: 8%; animation: floatC 8s ease-in-out infinite; }
 .bubble--d { bottom: 26%; right: 6%; animation: floatA 5.5s ease-in-out infinite; }
 
-/* Hero sketch portrait */
-.hero__sketch {
-  position: absolute;
-  bottom: 0; right: 5%;
-  width: 300px;
-  z-index: 1;
-  pointer-events: none;
-  animation: floatB 7s ease-in-out infinite;
-  filter: drop-shadow(0 12px 40px rgba(0,0,0,0.12));
-}
-.hero__sketch img {
-  width: 100%; height: auto; display: block;
-  mix-blend-mode: multiply;
-}
+/* old absolute sketch removed — now inline in title row */
 
 /* Stats row */
 .hero__stats {
@@ -449,7 +460,7 @@ a  { color: inherit; }
 
   .hero { padding: 100px 24px 60px; }
   .bubble--a, .bubble--b, .bubble--c, .bubble--d { display: none; }
-  .hero__sketch { width: 200px; right: 1%; opacity: 0.3; }
+  .hero__sketch-inline { width: 130px; }
 
   .about { padding: 80px 24px; }
   .about__grid { grid-template-columns: 1fr; }
@@ -472,7 +483,9 @@ a  { color: inherit; }
 @media (max-width: 600px) {
   .hero__title { font-size: 2.5rem; }
   .hero__stats { flex-direction: column; gap: 10px; }
-  .hero__sketch { display: none; }
+  .hero__title-row { flex-direction: column; gap: 16px; align-items: center; }
+  .hero__title { text-align: center; }
+  .hero__sketch-inline { width: 120px; }
   .skills__grid { grid-template-columns: 1fr; }
   .pub-card { grid-template-columns: 28px 1fr; }
   .pub-card__action { grid-column: 2; }
@@ -511,15 +524,15 @@ a  { color: inherit; }
     <div class="hero__bubbles">
       <div class="bubble bubble--a">
         <span class="bubble__label">Affiliation</span>
-        <span class="bubble__value">BMB-SUST</span>
+        <span class="bubble__value">CHRF, Bangladesh</span>
       </div>
       <div class="bubble bubble--b">
         <span class="bubble__label">Focus</span>
-        <span class="bubble__value">Single-Cell Multi-Omics</span>
+        <span class="bubble__value">Single-Cell Genomics</span>
       </div>
       <div class="bubble bubble--c">
         <span class="bubble__label">Training</span>
-        <span class="bubble__value">BMU; NICRH</span>
+        <span class="bubble__value">SUST — BMB</span>
       </div>
       <div class="bubble bubble--d">
         <span class="bubble__label">Publications</span>
@@ -527,19 +540,22 @@ a  { color: inherit; }
       </div>
     </div>
 
-    <!-- Sketch portrait -->
-    <div class="hero__sketch">
-      <img src="Mysketch-01.png" alt="Kabir Hossen illustration" />
-    </div>
-
     <div class="hero__content">
       <div class="hero__badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        MSc(Thesis) Student · Biocheimstry and Molecular Biology
+        Research Officer · Computational Biology
       </div>
-      <h1 class="hero__title">Kabir<br /><em>Hossen</em></h1>
-      <p class="hero__role">Gene Expression and Regulation</p>
-      <p class="hero__sub">I work at the intersection of multi-omics, cancer biology, and infectious diseases — integrating machine learning, bioinformatics, and wet-lab experiments to unveil disease mechanisms.</p>
+
+      <!-- Name + sketch side by side -->
+      <div class="hero__title-row">
+        <h1 class="hero__title">Kabir<br /><em>Hossen</em></h1>
+        <div class="hero__sketch-inline">
+          <img src="Mysketch-01.png" alt="Kabir Hossen illustration" />
+        </div>
+      </div>
+
+      <p class="hero__role">Single-Cell Genomics & Host-Pathogen Biology</p>
+      <p class="hero__sub">I work at the intersection of transcriptomics, host-pathogen biology, and computational modeling — integrating sequencing data, bioinformatics, and machine learning to study disease mechanisms.</p>
       <div class="hero__ctas">
         <a href="https://kabirmhossen.github.io/cv.pdf" target="_blank" class="btn btn--dark">Download CV</a>
         <a href="#research" class="btn btn--outline">View Research</a>
@@ -552,7 +568,7 @@ a  { color: inherit; }
         <span class="stat-pill__label">Publications</span>
       </div>
       <div class="stat-pill">
-        <span class="stat-pill__num">6</span>
+        <span class="stat-pill__num">4</span>
         <span class="stat-pill__label">Research projects</span>
       </div>
       <div class="stat-pill">
