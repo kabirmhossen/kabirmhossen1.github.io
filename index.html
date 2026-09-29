@@ -102,7 +102,7 @@ a  { color: inherit; }
   position: relative; min-height: 100vh;
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
-  padding: 130px 48px 80px; overflow: hidden; text-align: center;
+  padding: 80px 48px 60px; overflow: hidden; text-align: center;
 }
 
 .hero__grid-overlay {
@@ -136,7 +136,7 @@ a  { color: inherit; }
   align-items: stretch;
   justify-content: center;
   gap: 0;
-  margin-bottom: 28px;
+  margin-bottom: 16px;
 }
 
 /* Sketch column */
@@ -220,10 +220,10 @@ a  { color: inherit; }
 .bubble__label { color: var(--ink-soft); display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
 .bubble__value { color: var(--ink); font-weight: 500; font-size: 0.88rem; }
 
-.bubble--a { top: 22%; left: 6%;    opacity: 0; animation: fadeUp 0.6s 1.3s var(--ease) forwards; }
-.bubble--b { top: 28%; right: 5%;   opacity: 0; animation: fadeUp 0.6s 1.4s var(--ease) forwards; }
-.bubble--c { bottom: 38%; left: 8%; opacity: 0; animation: fadeUp 0.6s 1.5s var(--ease) forwards; }
-.bubble--d { bottom: 42%; right: 6%; opacity: 0; animation: fadeUp 0.6s 1.6s var(--ease) forwards; }
+.bubble--a { top: 18%; left: 6%;    opacity: 0; animation: fadeUp 0.6s 1.3s var(--ease) forwards; }
+.bubble--b { top: 22%; right: 5%;   opacity: 0; animation: fadeUp 0.6s 1.4s var(--ease) forwards; }
+.bubble--c { bottom: 30%; left: 8%; opacity: 0; animation: fadeUp 0.6s 1.5s var(--ease) forwards; }
+.bubble--d { bottom: 34%; right: 6%; opacity: 0; animation: fadeUp 0.6s 1.6s var(--ease) forwards; }
 
 /* Float kicks in after JS adds .floating class */
 .bubble--a.floating { animation: floatA 7s   ease-in-out infinite; opacity: 1; }
@@ -584,13 +584,13 @@ a  { color: inherit; }
       <svg viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
         <defs>
           <style>
-            .mol-line { fill: none; stroke: rgba(0,0,0,0.15); stroke-width: 1.2; }
-            .mol-node { fill: rgba(0,0,0,0.15); }
+            .mol-line { fill: none; stroke: rgba(0,0,0,0.07); stroke-width: 0.8; }
+            .mol-node { fill: rgba(0,0,0,0.07); }
           </style>
           <!-- Radial fade mask: visible in centre, transparent at edges -->
           <radialGradient id="molFade" cx="50%" cy="45%" r="60%" fx="50%" fy="45%">
-            <stop offset="0%"   stop-color="white" stop-opacity="0.75"/>
-            <stop offset="50%"  stop-color="white" stop-opacity="0.45"/>
+            <stop offset="0%"   stop-color="white" stop-opacity="0.55"/>
+            <stop offset="40%"  stop-color="white" stop-opacity="0.35"/>
             <stop offset="100%" stop-color="white" stop-opacity="0"/>
           </radialGradient>
           <mask id="molMask">
@@ -938,11 +938,6 @@ a  { color: inherit; }
     </div>
 
     <div class="hero__content">
-      <div class="hero__badge">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        Research Officer · Computational Biology
-      </div>
-
       <!-- Sketch LEFT | divider | Name RIGHT -->
       <div class="hero__stage">
         <div class="hero__sketch-col">
