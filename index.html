@@ -137,7 +137,7 @@ img{max-width:100%;display:block}
 .nav__hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 
 /* ---------------- HERO ---------------- */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:112px 40px 96px;overflow:hidden;text-align:center}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:86px 40px 48px;overflow:hidden;text-align:center}
 .hero__grid-overlay{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
 .hero__grid-overlay svg{position:absolute;inset:0;width:100%;height:100%}
 .mol-line{fill:none;stroke:var(--net-line);stroke-width:1.1}
@@ -147,23 +147,23 @@ img{max-width:100%;display:block}
   display:inline-flex;align-items:center;gap:9px;background:var(--accent-soft);
   border:1.5px solid color-mix(in srgb,var(--accent) 32%,transparent);border-radius:100px;
   padding:8px 18px;font-size:.8rem;font-weight:500;color:var(--accent);
-  backdrop-filter:blur(8px);margin-bottom:30px;
+  backdrop-filter:blur(8px);margin-bottom:20px;
   opacity:0;animation:fadeUp .7s .1s var(--ease) forwards;
 }
 .hero__badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:pulse 2.4s ease-in-out infinite}
-.hero__stage{display:flex;align-items:stretch;justify-content:center;margin-bottom:18px}
-.hero__sketch-col{display:flex;align-items:flex-end;justify-content:center;padding-right:34px;opacity:0;animation:slideInLeft .9s .3s var(--ease) forwards}
-.hero__sketch-col img{width:clamp(170px,19vw,260px);height:auto;mix-blend-mode:multiply;filter:drop-shadow(0 8px 28px rgba(0,0,0,.10));animation:floatB 7s ease-in-out infinite}
-[data-theme="dark"] .hero__sketch-col img{mix-blend-mode:screen;filter:invert(1)}
+.hero__stage{display:flex;align-items:stretch;justify-content:center;margin-bottom:12px}
+.hero__sketch-col{display:flex;align-items:flex-end;justify-content:center;padding-right:30px;opacity:0;animation:slideInLeft .9s .3s var(--ease) forwards}
+.hero__sketch-col img{width:clamp(142px,13.5vw,205px);height:auto;mix-blend-mode:multiply;filter:drop-shadow(0 8px 28px rgba(0,0,0,.10));animation:floatB 7s ease-in-out infinite}
+[data-theme="dark"] .hero__sketch-col img{mix-blend-mode:screen;filter:invert(1) hue-rotate(180deg)}
 .nav__logo-icon{mix-blend-mode:multiply}
 [data-theme="dark"] .nav__logo-icon{mix-blend-mode:normal;background:#fff}
-.hero__divider{width:1.5px;background:var(--ink);align-self:stretch;min-height:200px;opacity:0;animation:growLine .6s .5s var(--ease) forwards;transform-origin:top center;flex-shrink:0}
-.hero__name-col{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-left:34px;overflow:hidden}
-.hero__title-first,.hero__title-last{font-family:'DM Serif Display',serif;font-size:clamp(3.1rem,7.4vw,6.2rem);letter-spacing:-.03em;line-height:.95;display:block;opacity:0}
+.hero__divider{width:1.5px;background:var(--ink);align-self:stretch;min-height:158px;opacity:0;animation:growLine .6s .5s var(--ease) forwards;transform-origin:top center;flex-shrink:0}
+.hero__name-col{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-left:30px;overflow:hidden}
+.hero__title-first,.hero__title-last{font-family:'DM Serif Display',serif;font-size:clamp(2.6rem,5.4vw,4.7rem);letter-spacing:-.03em;line-height:.95;display:block;opacity:0}
 .hero__title-first{animation:slideFromLine .7s .65s var(--ease) forwards}
 .hero__title-last{animation:slideFromLine .7s .82s var(--ease) forwards}
-.hero__role{font-weight:400;font-size:clamp(1rem,1.5vw,1.16rem);color:var(--accent);margin-bottom:14px;letter-spacing:.01em;opacity:0;animation:fadeUp .7s 1s var(--ease) forwards}
-.hero__sub{font-size:1.01rem;color:var(--ink-mid);font-weight:300;max-width:600px;margin:0 auto 32px;line-height:1.72;opacity:0;animation:fadeUp .7s 1.1s var(--ease) forwards}
+.hero__role{font-weight:400;font-size:clamp(.94rem,1.3vw,1.07rem);color:var(--accent);margin-bottom:11px;letter-spacing:.01em;opacity:0;animation:fadeUp .7s 1s var(--ease) forwards}
+.hero__sub{font-size:.98rem;color:var(--ink-mid);font-weight:300;max-width:665px;margin:0 auto 24px;line-height:1.68;opacity:0;animation:fadeUp .7s 1.1s var(--ease) forwards}
 .hero__sub strong{font-weight:500;color:var(--ink)}
 .hero__ctas{display:flex;gap:11px;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .7s 1.2s var(--ease) forwards}
 .hero__bubbles{position:absolute;inset:0;pointer-events:none;z-index:1}
@@ -172,13 +172,13 @@ img{max-width:100%;display:block}
 .bubble__value{color:var(--ink);font-weight:500;font-size:.85rem}
 .bubble--a{top:17%;left:4.5%;animation-delay:1.3s}
 .bubble--b{top:21%;right:4%;animation-delay:1.4s}
-.bubble--c{bottom:29%;left:6.5%;animation-delay:1.5s}
-.bubble--d{bottom:33%;right:4.5%;animation-delay:1.6s}
+.bubble--c{bottom:40%;left:6.5%;animation-delay:1.5s}
+.bubble--d{bottom:43%;right:4.5%;animation-delay:1.6s}
 .bubble--a.floating{animation:floatA 7s ease-in-out infinite;opacity:1}
 .bubble--b.floating{animation:floatB 6s ease-in-out infinite;opacity:1}
 .bubble--c.floating{animation:floatC 8s ease-in-out infinite;opacity:1}
 .bubble--d.floating{animation:floatA 5.5s ease-in-out infinite;opacity:1}
-.hero__stats{display:flex;gap:11px;margin-top:52px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center}
+.hero__stats{display:flex;gap:11px;margin-top:40px;position:relative;z-index:2;flex-wrap:wrap;justify-content:center}
 .stat-pill{background:var(--pill-bg);border:1.5px solid var(--border);border-radius:var(--radius);padding:15px 26px;backdrop-filter:blur(12px);text-align:left;opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease,box-shadow .3s,border-color .3s}
 .stat-pill.revealed{opacity:1;transform:translateY(0)}
 .stat-pill:hover{box-shadow:var(--shadow-lg);border-color:var(--border-strong);transform:translateY(-3px)}
@@ -188,12 +188,16 @@ img{max-width:100%;display:block}
 .hero__scroll::after{content:'';width:1px;height:26px;background:linear-gradient(var(--ink-soft),transparent);animation:scrollHint 2s ease-in-out infinite}
 
 /* ---------------- AFFILIATION BAND ---------------- */
-.affiliation-band{padding:30px 40px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-card);display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+.affiliation-band{padding:34px 40px 36px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-card);display:flex;flex-direction:column;align-items:center;gap:22px}
 .affiliation-band__label{font-size:.7rem;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.12em;white-space:nowrap}
-.affiliation-band__items{display:flex;gap:34px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
-.affiliation-item{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center}
-.affiliation-item__name{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--ink)}
-.affiliation-item__sub{font-size:.72rem;color:var(--ink-soft);max-width:180px;line-height:1.4}
+.affiliation-band__items{display:flex;gap:30px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+.affiliation-item{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center;width:196px}
+.affiliation-item__logo-wrap{display:flex;align-items:center;justify-content:center;height:64px}
+.affiliation-item__logo{max-height:64px;width:auto;max-width:112px;object-fit:contain;display:block}
+[data-theme="dark"] .affiliation-item__logo-wrap{background:#fff;border-radius:10px;padding:6px 11px;height:auto}
+[data-theme="dark"] .affiliation-item__logo{max-height:50px}
+.affiliation-item__name{font-family:'DM Serif Display',serif;font-size:1.02rem;color:var(--ink);line-height:1.2}
+.affiliation-item__sub{font-size:.72rem;color:var(--ink-soft);line-height:1.45}
 
 /* ---------------- SECTION SHELL ---------------- */
 .section{padding:104px 40px}
@@ -478,7 +482,8 @@ img{max-width:100%;display:block}
   .skills__grid{grid-template-columns:1fr}
   .pub-card{grid-template-columns:26px 1fr}
   .pub-card__action{grid-column:2;margin-top:12px}
-  .affiliation-band{flex-direction:column;gap:18px}
+  .affiliation-band__items{gap:20px}
+  .affiliation-item{width:142px}
   .thread{grid-template-columns:1fr;gap:0}
   .thread__step{padding-right:0}
   .proj__question{padding:15px 17px}
@@ -867,10 +872,26 @@ img{max-width:100%;display:block}
 <div class="affiliation-band">
   <span class="affiliation-band__label">Research across</span>
   <div class="affiliation-band__items">
-    <div class="affiliation-item"><span class="affiliation-item__name">SUST</span><span class="affiliation-item__sub">Biochemistry &amp; Molecular Biology</span></div>
-    <div class="affiliation-item"><span class="affiliation-item__name">BMU</span><span class="affiliation-item__sub">Virology, Bangladesh Medical University</span></div>
-    <div class="affiliation-item"><span class="affiliation-item__name">NICRH</span><span class="affiliation-item__sub">Surgical Oncology, Dhaka</span></div>
-    <div class="affiliation-item"><span class="affiliation-item__name">UQ</span><span class="affiliation-item__sub">University of Queensland (remote)</span></div>
+    <div class="affiliation-item">
+      <span class="affiliation-item__logo-wrap"><img src="SUST_Logo.png" alt="Shahjalal University of Science and Technology" class="affiliation-item__logo" loading="lazy" /></span>
+      <span class="affiliation-item__name">SUST</span>
+      <span class="affiliation-item__sub">Department of Biochemistry &amp; Molecular Biology</span>
+    </div>
+    <div class="affiliation-item">
+      <span class="affiliation-item__logo-wrap"><img src="BMU_Logo.png" alt="Bangladesh Medical University" class="affiliation-item__logo" loading="lazy" /></span>
+      <span class="affiliation-item__name">BMU</span>
+      <span class="affiliation-item__sub">Department of Virology</span>
+    </div>
+    <div class="affiliation-item">
+      <span class="affiliation-item__logo-wrap"><img src="NICRH_logo.png" alt="National Institute of Cancer Research and Hospital" class="affiliation-item__logo" loading="lazy" /></span>
+      <span class="affiliation-item__name">NICRH</span>
+      <span class="affiliation-item__sub">Department of Surgical Oncology</span>
+    </div>
+    <div class="affiliation-item">
+      <span class="affiliation-item__logo-wrap"><img src="UQ_logo.png" alt="The University of Queensland" class="affiliation-item__logo" loading="lazy" /></span>
+      <span class="affiliation-item__name">UQ</span>
+      <span class="affiliation-item__sub">AIBN (remote)</span>
+    </div>
   </div>
 </div>
 
@@ -1297,7 +1318,7 @@ img{max-width:100%;display:block}
           <span class="proj__status status--prep">Manuscript in preparation</span>
           <dl class="proj__facts">
             <div class="proj__fact"><dt>Role</dt><dd>Research Volunteer (remote)</dd></div>
-            <div class="proj__fact"><dt>Where</dt><dd>University of Queensland, Australia</dd></div>
+            <div class="proj__fact"><dt>Where</dt><dd>AIBN, University of Queensland, Australia</dd></div>
             <div class="proj__fact"><dt>When</dt><dd>Feb – Nov 2025</dd></div>
             <div class="proj__fact"><dt>Advisor</dt><dd>Dr. Tanvir Hossain</dd></div>
           </dl>
@@ -1327,7 +1348,7 @@ img{max-width:100%;display:block}
 
             <figure class="figure">
               <button class="figure__btn" data-full="Glyco_RNA_project_v2.png" data-cap="glycoRNA detection workflow — from EMT induction and glycoRNA extraction through qRT-PCR and FACS to ncRNA sequencing, differential expression and RFE-RF classifier benchmarking.">
-                <img src="Glyco_RNA_project_v2.png" alt="glycoRNA project workflow: epithelial to mesenchymal transition, glycoRNA extraction, qRT-PCR and FACS quantification, next-generation sequencing through DESeq2, Venn comparison across breast cervical and lung cancers, RFE-RF feature selection and model benchmarking" loading="lazy" decoding="async" width="1990" height="2000" />
+                <img src="Glyco_RNA_project_v2.png" alt="glycoRNA project workflow: epithelial to mesenchymal transition, glycoRNA extraction, qRT-PCR and FACS quantification, next-generation sequencing through DESeq2, Venn comparison across breast cervical and lung cancers, RFE-RF feature selection and model benchmarking" loading="lazy" decoding="async" width="1254" height="1254" />
                 <span class="figure__zoom"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.3" y2="16.3"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>Enlarge</span>
               </button>
               <figcaption><b>Detection workflow.</b> TGF-β-induced EMT and glycoRNA extraction feed two readouts — qRT-PCR and FACS — alongside ncRNA sequencing. DESeq2 differential expression and cross-cancer intersection define unique glycoRNAs; RFE-RF feature selection and benchmarking yield a single-glycoRNA classifier.</figcaption>
