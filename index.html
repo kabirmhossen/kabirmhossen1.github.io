@@ -210,6 +210,11 @@ img{max-width:100%;display:block}
 .section-title em{color:var(--accent)}
 .section-sub{color:var(--ink-mid);font-size:1rem;font-weight:300;line-height:1.72;max-width:620px}
 .section-header--center .section-sub{margin-left:auto;margin-right:auto}
+.section-links{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.section-links a{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:500;color:var(--ink-mid);text-decoration:none;background:var(--bg-card);border:1.5px solid var(--border);border-radius:100px;padding:8px 16px;transition:all .3s var(--ease)}
+.section--alt .section-links a{background:var(--bg)}
+.section-links a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+.section-links svg{flex-shrink:0;color:var(--accent)}
 
 /* ---------------- ABOUT ---------------- */
 .about__grid{display:grid;grid-template-columns:1.25fr .85fr;gap:52px;align-items:start}
@@ -1467,6 +1472,16 @@ button.contact-item{width:100%;font-family:inherit;text-align:left;cursor:pointe
       </div>
       <h2 class="section-title">Scholarly <em>output</em></h2>
       <p class="section-sub">Three peer-reviewed papers, one preprint under review and one manuscript in preparation — with co-first authorship on two, equal contribution formally acknowledged.</p>
+      <p class="section-links">
+        <a href="https://scholar.google.com/citations?user=p6811e4AAAAJ&amp;hl=en" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12.2V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.8"/></svg>
+          Google Scholar
+        </a>
+        <a href="https://orcid.org/0009-0008-3567-7237" target="_blank" rel="noopener">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><line x1="8.6" y1="10.4" x2="8.6" y2="16"/><circle cx="8.6" cy="7.9" r="0.9" fill="currentColor" stroke="none"/><path d="M12.4 16V10.4h2.1a2.8 2.8 0 0 1 0 5.6z"/></svg>
+          ORCID 0009-0008-3567-7237
+        </a>
+      </p>
     </div>
 
     <div class="pub-list">
@@ -1800,6 +1815,22 @@ button.contact-item{width:100%;font-family:inherit;text-align:left;cursor:pointe
         </span>
         <button class="copy-btn" id="copyEmail" type="button" aria-label="Copy email address">Copy</button>
       </a>
+      <a href="https://scholar.google.com/citations?user=p6811e4AAAAJ&amp;hl=en" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-item__icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12.2V17c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.8"/></svg></span>
+        <span>
+          <span class="contact-item__label">Google Scholar</span>
+          <span class="contact-item__value">Publications &amp; citations</span>
+        </span>
+        <span class="contact-item__arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
+      <a href="https://orcid.org/0009-0008-3567-7237" target="_blank" rel="noopener" class="contact-item">
+        <span class="contact-item__icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9.2"/><line x1="8.6" y1="10.4" x2="8.6" y2="16"/><circle cx="8.6" cy="7.9" r="0.9" fill="currentColor" stroke="none"/><path d="M12.4 16V10.4h2.1a2.8 2.8 0 0 1 0 5.6z"/></svg></span>
+        <span>
+          <span class="contact-item__label">ORCID iD</span>
+          <span class="contact-item__value">0009-0008-3567-7237</span>
+        </span>
+        <span class="contact-item__arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </a>
       <a href="https://github.com/kabirmhossen" target="_blank" rel="noopener" class="contact-item">
         <span class="contact-item__icon"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.7-.3-5.5-1.3-5.5-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.9 18.3 5.2 18.3 5.2c.6 1.7.2 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3"/></svg></span>
         <span>
@@ -1857,6 +1888,8 @@ button.contact-item{width:100%;font-family:inherit;text-align:left;cursor:pointe
       <div class="footer__col">
         <h4>Connect</h4>
         <a href="mailto:kabirmhossen95@gmail.com">Email</a>
+        <a href="https://scholar.google.com/citations?user=p6811e4AAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://orcid.org/0009-0008-3567-7237" target="_blank" rel="noopener">ORCID iD</a>
         <a href="https://github.com/kabirmhossen" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/kabirhossen18" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://omicml.org" target="_blank" rel="noopener">omicML.org</a>
@@ -1886,7 +1919,7 @@ button.contact-item{width:100%;font-family:inherit;text-align:left;cursor:pointe
            kabirmhossen95@gmail.com and the key arrives by email.
            This key is safe to publish; it only routes mail to you.
       ================================================================= -->
-      <input type="hidden" name="access_key" value="3b8786bf-8de0-479f-81b0-159b99c524ea" />
+      <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE" />
       <input type="hidden" name="subject" value="CV request from your portfolio site" />
       <input type="hidden" name="from_name" value="kabirmhossen1.github.io" />
       <input type="hidden" name="replyto" id="cvReplyTo" value="" />
